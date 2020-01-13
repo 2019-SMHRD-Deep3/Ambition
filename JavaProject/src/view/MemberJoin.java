@@ -15,6 +15,8 @@ import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
+import javax.swing.JList;
 
 public class MemberJoin {
 
@@ -169,5 +171,19 @@ public class MemberJoin {
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_4, 48, SpringLayout.SOUTH, panel_5);
 		springLayout.putConstraint(SpringLayout.EAST, panel_4, 748, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_4);
+		panel_4.setLayout(new GridLayout(1, 3, 0, 0));
+		
+		JLabel lblNewLabel_6 = new JLabel("\uC9C1\uC704");
+		lblNewLabel_6.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+		panel_4.add(lblNewLabel_6);
+		
+		JList list = new JList();
+		panel_4.add(list);
+		
+		JList list_1 = new JList();
+		panel_4.add(list_1);
+		
+		JList list_2 = new JList();
+		panel_4.add(list_2);
 	}
 }
