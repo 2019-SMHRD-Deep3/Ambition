@@ -46,22 +46,22 @@ public class view11 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 963, 593);
+		frame.setBounds(500, 200, 963, 593);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\\uD0F1\uD06C2.png"));
+		lblNewLabel_5.setIcon(new ImageIcon("C:\\image\\\uD0F1\uD06C2.png"));
 		lblNewLabel_5.setBounds(41, 463, 109, 56);
 		frame.getContentPane().add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\ddd.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\image\\ddd.png"));
 		lblNewLabel_2.setBounds(30, 27, 48, 49);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\\uD0F1\uD06C.png"));
+		lblNewLabel_4.setIcon(new ImageIcon("C:\\image\\\uD0F1\uD06C.png"));
 		lblNewLabel_4.setBounds(154, 463, 66, 56);
 		frame.getContentPane().add(lblNewLabel_4);
 		
@@ -87,12 +87,12 @@ public class view11 {
 		frame.getContentPane().add(Number);
 		
 		JLabel Join = new JLabel("");
-		Join.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\\uC870\uC778.png"));
+		Join.setIcon(new ImageIcon("C:\\image\\\uC870\uC778.png"));
 		Join.setBounds(709, 383, 103, 49);
 		frame.getContentPane().add(Join);
 		
 		JLabel SignIn = new JLabel("");
-		SignIn.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\\uB85C\uADF8\uC7784.png"));
+		SignIn.setIcon(new ImageIcon("C:\\image\\\uB85C\uADF8\uC7784.png"));
 		SignIn.setBounds(594, 383, 103, 49);
 		frame.getContentPane().add(SignIn);
 		
@@ -104,12 +104,12 @@ public class view11 {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\mainimage2.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\image\\mainimage2.png"));
 		lblNewLabel_1.setBounds(462, 0, 493, 556);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\SM001\\Desktop\\\uC790\uBC14\uC774\uBBF8\uC9C0\\mainimage1.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\image\\mainimage1.png"));
 		lblNewLabel.setBounds(0, 0, 493, 556);
 		frame.getContentPane().add(lblNewLabel);
 	}
