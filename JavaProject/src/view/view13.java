@@ -40,7 +40,7 @@ public class view13 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(500, 200, 963, 592);
+		frame.setBounds(500, 200, 963, 581);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

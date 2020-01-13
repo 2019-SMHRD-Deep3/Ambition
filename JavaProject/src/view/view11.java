@@ -80,7 +80,7 @@ public class view11 {
 		frame.getContentPane().add(pw);
 		pw.setColumns(10);
 		
-		JLabel Number = new JLabel("Ary Number");
+		JLabel Number = new JLabel("Army Number");
 		Number.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
 		Number.setForeground(Color.WHITE);
 		Number.setBounds(589, 111, 264, 43);
