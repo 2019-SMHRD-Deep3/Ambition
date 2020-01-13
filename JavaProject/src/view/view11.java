@@ -17,8 +17,8 @@ import java.awt.event.MouseEvent;
 public class view11 {
 
 	private JFrame frame;
-	private JTextField pw;
-	private JPasswordField passwordField;
+	private JTextField id;
+	private JPasswordField pw;
 
 	/**
 	 * Launch the application.
@@ -67,9 +67,9 @@ public class view11 {
 		lblNewLabel_4.setBounds(154, 463, 66, 56);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(589, 265, 223, 28);
-		frame.getContentPane().add(passwordField);
+		pw = new JPasswordField();
+		pw.setBounds(589, 265, 223, 28);
+		frame.getContentPane().add(pw);
 		
 		JLabel lblPaw = new JLabel("Password");
 		lblPaw.setForeground(Color.WHITE);
@@ -77,10 +77,10 @@ public class view11 {
 		lblPaw.setBounds(589, 220, 264, 43);
 		frame.getContentPane().add(lblPaw);
 		
-		pw = new JTextField();
-		pw.setBounds(589, 154, 223, 28);
-		frame.getContentPane().add(pw);
-		pw.setColumns(10);
+		id = new JTextField();
+		id.setBounds(589, 154, 223, 28);
+		frame.getContentPane().add(id);
+		id.setColumns(10);
 		
 		JLabel Number = new JLabel("Ary Number");
 		Number.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
@@ -102,6 +102,7 @@ public class view11 {
 		SignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 			}
 		});
 		SignIn.setIcon(new ImageIcon("C:\\image\\\uB85C\uADF8\uC7784.png"));
