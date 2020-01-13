@@ -6,6 +6,7 @@ public class Main {
 
 		System.out.println("Hello");
 		System.out.println("하이");
+		System.out.println("할루");
 	}
 
 }
