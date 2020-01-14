@@ -65,7 +65,7 @@ public class ArmyMain {
 		panel.add(lblNewlabel);
 		
 		JLabel lblNewLabel_3 = new JLabel("\uCD9C\uD0C0\uAD00\uB9AC");
-		lblNewLabel_3.setBounds(0, 375, 147, 64);
+		lblNewLabel_3.setBounds(12, 375, 147, 64);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("");

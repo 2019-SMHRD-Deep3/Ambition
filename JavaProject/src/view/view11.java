@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class view11 {
 
@@ -92,6 +94,12 @@ public class view11 {
 		frame.getContentPane().add(Join);
 		
 		JLabel SignIn = new JLabel("");
+		SignIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				View13 view = new View13();
+			}
+		});
 		SignIn.setIcon(new ImageIcon("C:\\image\\\uB85C\uADF8\uC7784.png"));
 		SignIn.setBounds(594, 383, 103, 49);
 		frame.getContentPane().add(SignIn);
