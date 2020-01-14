@@ -230,26 +230,42 @@ public class login {
 				String Army_id = ID2.getText();
 				String Password = PW2.getText();
 				String PasswordCheck = PWW2.getText();
-				int Phonenumber = Integer.parseInt(PN.getText());
-				int sex = 0;
-				if (male.isSelected() == true) { // 선택레뒤오박스는 isSelected를 사용. 불린형
-					sex = 1;
-				} else {
-					sex = 2;
-				}
-				// Member 객체를 생성
+				if (Password.equals(PasswordCheck)) {
+					int Phonenumber = Integer.parseInt(PN.getText());
+					int sex = 0;
+					if (male.isSelected() == true) { // 선택레뒤오박스는 isSelected를 사용. 불린형
+						sex = 1;
+					} else {
+						sex = 2;
+					}
+					// Member 객체를 생성
 
-				Member member = new Member(Army_id, Password, PasswordCheck, Phonenumber, sex);
-				// Controller에게 회원가입요청
-				boolean result = service.memberJoin(member); // 정보는 m을 받아서 조인. 성공하면 ture 실패하면false를 받기위해 불린형 타입에 넣어준다.
-				if (result == true) {
-					JOptionPane.showMessageDialog(frame, "회원가입 성공");
-					pnlCards.removeAll();
-					pnlCards.add(pnlCard1);
-					pnlCards.repaint();
-					pnlCards.revalidate();
+					Member member = new Member(Army_id, Password, PasswordCheck, Phonenumber, sex);
+					// Controller에게 회원가입요청
+//	               if(Password!=PasswordCheck) {
+//	                  JOptionPane.showMessageDialog(frame,
+//	                         "회원가입 실패");
+//	               }
+
+					boolean result = service.memberJoin(member); // 정보는 m을 받아서 조인. 성공하면 ture 실패하면false를 받기위해 불린형 타입에
+																	// 넣어준다.
+					if (result == true) {
+						JOptionPane.showMessageDialog(frame, "회원가입 성공");
+						ID2.setText(null);
+						PW2.setText(null);
+						PWW2.setText(null);
+						PN.setText(null);
+
+						pnlCards.removeAll();
+						pnlCards.add(pnlCard1);
+						pnlCards.repaint();
+						pnlCards.revalidate();
+
+					} else {
+						JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					}
 				} else {
-					JOptionPane.showMessageDialog(frame, "회원가입 실패");
+					JOptionPane.showMessageDialog(frame, "비밀번호를 확인해주세요");
 				}
 			}
 		});
@@ -326,6 +342,10 @@ public class login {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				ID2.setText(null);
+				PW2.setText(null);
+				PWW2.setText(null);
+				PN.setText(null);
 				pnlCards.removeAll();
 				pnlCards.add(pnlCard1);
 				pnlCards.repaint();
