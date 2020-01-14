@@ -10,12 +10,11 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.SystemColor;
+import javax.swing.JLabel;
 
 public class Imagechart {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -53,43 +52,83 @@ public class Imagechart {
 		panel_1.setBackground(new Color(102, 153, 204));
 		panel_1.setBounds(518, 241, 162, 29);
 		frame.getContentPane().add(panel_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setBackground(SystemColor.textHighlight);
-		textField_1.setForeground(new Color(102, 153, 204));
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setFont(new Font("±¼¸²", Font.BOLD, 12));
-		textField_1.setText("\uC911\uB300\uC7A5");
-		panel_1.add(textField_1);
-		textField_1.setColumns(10);
+		panel_1.setLayout(null);
 		
 		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(81, 5, 0, 2);
 		panel_1.add(separator_4);
+		
+		JLabel lblNewLabel_2 = new JLabel("\uC911\uB300\uC7A5");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(51, 8, 57, 15);
+		panel_1.add(lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(102, 153, 153));
 		panel_2.setBounds(83, 438, 183,36);
 		frame.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("\uC218\uC1A1");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(255, 250, 250));
+		lblNewLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel.setBounds(61, 10, 57, 15);
+		panel_2.add(lblNewLabel);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(new Color(102, 153, 153));
 		panel_3.setBounds(295, 439, 183, 36);
 		frame.getContentPane().add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("\uD1B5\uC2E0");
+		lblNewLabel_3.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(63, 11, 57, 15);
+		panel_3.add(lblNewLabel_3);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(102, 153, 153));
 		panel_4.setBounds(505, 439, 183, 36);
 		frame.getContentPane().add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("\uC758\uBB34");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_4.setBounds(65, 8, 57, 15);
+		panel_4.add(lblNewLabel_4);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(102, 153, 153));
 		panel_5.setBounds(720, 437, 183, 36);
 		frame.getContentPane().add(panel_5);
+		panel_5.setLayout(null);
+		
+		JLabel lblNewLabel_5 = new JLabel("\uD0C4\uC57D");
+		lblNewLabel_5.setForeground(new Color(255, 255, 255));
+		lblNewLabel_5.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setBounds(65, 9, 57, 15);
+		panel_5.add(lblNewLabel_5);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(102, 153, 153));
 		panel_6.setBounds(942, 437, 183, 36);
 		frame.getContentPane().add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_6 = new JLabel("\uC791\uC804");
+		lblNewLabel_6.setForeground(new Color(255, 255, 255));
+		lblNewLabel_6.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6.setBounds(64, 10, 57, 15);
+		panel_6.add(lblNewLabel_6);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBounds(97, 520, 156, 131);
@@ -198,15 +237,13 @@ public class Imagechart {
 		panel_17.setBackground(new Color(0, 102, 153));
 		panel_17.setBounds(469, 111, 248, 24);
 		frame.getContentPane().add(panel_17);
+		panel_17.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("±¼¸²", Font.BOLD, 12));
-		textField.setForeground(new Color(255, 255, 255));
-		textField.setText("\uB300\uB300\uC7A5");
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setBackground(new Color(0, 102, 153));
-		panel_17.add(textField);
-		textField.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("\uB300\uB300\uC7A5");
+		lblNewLabel_1.setForeground(new Color(255, 250, 250));
+		lblNewLabel_1.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(95, 5, 64, 15);
+		panel_17.add(lblNewLabel_1);
 		
 		JPanel panel_18 = new JPanel();
 		panel_18.setBounds(540, 1, 106, 112);
