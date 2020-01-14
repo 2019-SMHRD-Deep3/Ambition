@@ -177,13 +177,6 @@ public class MemberJoin {
 		lblNewLabel_6.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 		panel_4.add(lblNewLabel_6);
 		
-		JList list = new JList();
-		panel_4.add(list);
-		
-		JList list_1 = new JList();
-		panel_4.add(list_1);
-		
-		JList list_2 = new JList();
-		panel_4.add(list_2);
+
 	}
 }
