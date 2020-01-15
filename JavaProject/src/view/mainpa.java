@@ -5,26 +5,36 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.TableColumn;
+
+import controller.MemberManagementService;
+import model.MemberAll;
 
 public class mainpa {
 	private JFrame frame;
 	private CardLayout cardLayout;
+	private MemberManagementService service = new MemberManagementService();
 	private int[] numOfdays = { 31, 28, 30, 31, 30, 31, 31, 30, 31, 30, 31, 30 };
+	private MemberAll loginUser;
+	private JTable table;
+	private JScrollPane scrollPane;
+	private static mainpa window;
 
 	/**
 	 * Launch the application.
@@ -33,7 +43,7 @@ public class mainpa {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					mainpa window = new mainpa();
+					window = new mainpa();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -132,9 +142,29 @@ public class mainpa {
 		HumanMangement.setBackground(new Color(0, 0, 204));
 		HumanMangement.setBounds(0, 0, 991, 661);
 		panel_2.add(HumanMangement);
+		HumanMangement.setLayout(null);// 추가한것
 
+		// 추가한공간 시작
+		JButton btnNewButton_1 = new JButton("\uB4F1\uB85D");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Enroll join = new Enroll(window);
+
+			}
+		});
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.setBounds(900, 150, 80, 23);
+		HumanMangement.add(btnNewButton_1);
+
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 200, 991, 400);
+		HumanMangement.add(scrollPane);
+
+		show();
+		// 추가한 공간 끝
 		JPanel Attend = new JPanel();
-		Attend.setBackground(new Color(240,240,240));
+		Attend.setBackground(new Color(240, 240, 240));
 		Attend.setBounds(0, 0, 991, 661);
 //		panel_2.add(Attend); //주석처리는 앞에 안보이게
 		Attend.setLayout(new CardLayout(0, 0));
@@ -148,26 +178,26 @@ public class mainpa {
 		달력패널.add(달력뷰);
 		cardLayout = new CardLayout(0, 0);
 		달력뷰.setLayout(cardLayout);
-				
-						JButton BtnNewButton = new JButton("\uC774\uC804\uB2EC");
-						BtnNewButton.setBounds(366, 612, 79, 23);
-						달력패널.add(BtnNewButton);
-						
-								JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
-								BtnNewButton_1.setBounds(500, 612, 73, 23);
-								달력패널.add(BtnNewButton_1);
-								BtnNewButton_1.addMouseListener(new MouseAdapter() {
-									@Override
-									public void mouseClicked(MouseEvent e) {
-										cardLayout.next(달력뷰);
-									}
-								});
-						BtnNewButton.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								cardLayout.previous(달력뷰);
-							}
-						});
+
+		JButton BtnNewButton = new JButton("\uC774\uC804\uB2EC");
+		BtnNewButton.setBounds(366, 612, 79, 23);
+		달력패널.add(BtnNewButton);
+
+		JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
+		BtnNewButton_1.setBounds(500, 612, 73, 23);
+		달력패널.add(BtnNewButton_1);
+		BtnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.next(달력뷰);
+			}
+		});
+		BtnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.previous(달력뷰);
+			}
+		});
 
 		for (int i = 0; i < 12; i++) {
 			달력뷰.add(new CalendarCard((i + 1) + "월", numOfdays[i]));
@@ -303,5 +333,31 @@ public class mainpa {
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\image\\\uC2A4\uB9C8\uD2B8\uBBF8\uB514\uC5B4\uB85C\uACE0.png"));
 		lblNewLabel_1.setBounds(4, 28, 57, 61);
 		panel.add(lblNewLabel_1);
+	}
+
+	public void show() {
+		String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
+				"BloodType", "Vacation", "Enlist", "Discharge"
+
+		};
+		ArrayList<MemberAll> list = service.MemberAllLookup();
+
+		Object[][] data = new Object[list.size()][11];
+		for (int i = 0; i < list.size(); i++) {
+			MemberAll m = list.get(i);
+			data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),
+					m.getBloodType(), m.getAddress(), m.getMos(), m.getEnlist(), m.getDischarge(), m.getVacaTion() };
+		}
+		table = new JTable(data, columnNames);
+		TableColumn column = null;
+		for (int i = 0; i < 5; i++) {
+			column = table.getColumnModel().getColumn(i);
+			if (i == 2) {
+				column.setPreferredWidth(100); // third column is bigger
+			} else {
+				column.setPreferredWidth(50);
+			}
+		}
+		scrollPane.setViewportView(table);
 	}
 }

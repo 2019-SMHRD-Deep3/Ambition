@@ -76,7 +76,7 @@ add constraint fk_unit_army foreign key(MOS)
 REFERENCES unit(MOS);
 
 create table sous(
-sous_id varchar2(20) primary key,
+army_id varchar2(20) primary key,
 sous_name varchar2(10) not null,
 sous_birth varchar2(10) not null,
 bloodtype varchar2(5) not null,
@@ -98,7 +98,7 @@ add constraint fk_unit_sous foreign key(MOS)
 REFERENCES unit(MOS);
 
 create table officer(
-officer_id varchar2(20) primary key,
+army_id varchar2(20) primary key,
 officer_name varchar2(10) not null,
 officer_birth varchar2(10) not null,
 bloodtype varchar2(5) not null,
