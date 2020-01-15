@@ -35,7 +35,20 @@ INSERT into MEMBERINFO values('20-7600001','배민이',950120,'중사','수송','2018-1
 INSERT into MEMBERINFO values('20-7600002','방세미',950121,'중사','통신','2018-12-02',NULL,'12345','12345');
 INSERT into MEMBERINFO values('20-7600003','김효진',950122,'중사','탄약','2018-12-02',NULL,'12345','12345');
 INSERT into MEMBERINFO values('20-7600004','임소정',950123,'중사','의무','2018-12-02',NULL,'12345','12345');
-INSERT into MEMBERINFO values('20-7600001','임수현',950124,'중사','작전','2018-12-02',NULL,'12345','12345');
+INSERT into MEMBERINFO values('20-7600005','임수현',950124,'중사','작전','2018-12-02',NULL,'12345','12345');
 
 INSERT into MEMBERINFO values('20-760001','ㅇㅇㅇㅇ',850101,'중위',NULL,'2008-12-02',NULL,'12345','12345');
 INSERT into MEMBERINFO values('20-76001','00000',750101,'ㅐㅐ',NULL,'2018-12-02',NULL,'12345','12345');
+
+
+
+
+create table logininfo (
+army_id varchar2(10) PRIMARY KEY,
+Password varchar2(10),
+PasswordCheck varchar2(10),
+Phonenumber number(10),
+sex number(10));
+
+
+commit;
