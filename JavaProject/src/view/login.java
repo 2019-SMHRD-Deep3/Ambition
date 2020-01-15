@@ -157,6 +157,7 @@ public class login {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 
 					frame.dispose(); // 로그인창은 꺼준다.
+					
 				}
 			}
 
