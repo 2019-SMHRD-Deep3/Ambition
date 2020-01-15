@@ -44,6 +44,8 @@ public class Imagechart {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(255, 255, 255));
 		frame.setBounds(100, 100, 1300, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -239,10 +241,11 @@ public class Imagechart {
 		frame.getContentPane().add(panel_17);
 		panel_17.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("\uB300\uB300\uC7A5");
+		JLabel lblNewLabel_1 = new JLabel("\uB300\uB300\uC7A5 \uCC28\uC900\uC12D");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setForeground(new Color(255, 250, 250));
 		lblNewLabel_1.setFont(new Font("±¼¸²", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(95, 5, 64, 15);
+		lblNewLabel_1.setBounds(45, 5, 165, 15);
 		panel_17.add(lblNewLabel_1);
 		
 		JPanel panel_18 = new JPanel();
