@@ -85,6 +85,7 @@ public class login {
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 
+		
 		ImageIcon icon = new ImageIcon("C:\\image\\메인이미지4.PNG");
 
 		panel = new JPanel() {
