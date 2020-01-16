@@ -72,6 +72,17 @@ public class mainpa {
 		panel_2.setBounds(293, 0, 991, 661);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
+		
+				JPanel MainView = new JPanel();
+				MainView.setBackground(new Color(255, 255, 255));
+				MainView.setBounds(0, 0, 991, 661);
+				panel_2.add(MainView);
+				MainView.setLayout(null);
+				
+						JLabel lblNewLabel_2 = new JLabel("New label");
+						lblNewLabel_2.setIcon(new ImageIcon("C:\\image\\\uBE44\uD589\uAE301.png"));
+						lblNewLabel_2.setBounds(-102, 0, 1093, 661);
+						MainView.add(lblNewLabel_2);
 		// 추가한 공간 끝
 		JPanel Attend = new JPanel();
 		Attend.setBackground(new Color(240, 240, 240));
@@ -121,17 +132,6 @@ public class mainpa {
 												cardLayout.previous(달력뷰);
 											}
 										});
-
-		JPanel MainView = new JPanel();
-		MainView.setBackground(new Color(255, 255, 255));
-		MainView.setBounds(0, 0, 991, 661);
-		panel_2.add(MainView);
-		MainView.setLayout(null);
-
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\image\\\uBE44\uD589\uAE301.png"));
-		lblNewLabel_2.setBounds(-102, 0, 1093, 661);
-		MainView.add(lblNewLabel_2);
 
 		JPanel LocationInfo = new JPanel();
 		LocationInfo.setBounds(0, 0, 991, 661);
