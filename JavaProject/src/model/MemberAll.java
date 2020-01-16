@@ -18,16 +18,16 @@ public class MemberAll {
          String bloodType, String vacaTion, String enlist, String discharge) {
       super();
       Army_id = army_id;
+      ArmyClass = armyClass;
+      Mos = mos;
       Army_name = army_name;
       Army_birth = army_birth;
-      BloodType = bloodType;
       Sex = sex;
       Address = address;
-      Mos = mos;
+      BloodType = bloodType;
+      VacaTion = vacaTion;
       Enlist = enlist;
       Discharge = discharge;
-      ArmyClass = armyClass;
-      VacaTion = vacaTion;
    }
    
    public String getArmy_id() {
@@ -117,6 +117,6 @@ public class MemberAll {
    public void setVacaTion(String vacaTion) {
       VacaTion = vacaTion;
    }
-
+   
    
 }

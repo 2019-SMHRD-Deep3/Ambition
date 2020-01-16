@@ -138,7 +138,7 @@ public class MemberDAO {
             String Army_id = rs.getString("Army_id");
             String ArmyClass = rs.getString("ArmyClass");
             String Mos = rs.getString("Mos");
-            String Army_Name = rs.getString("Army_id");
+            String Army_Name = rs.getString("Army_name");
             String Army_Birth = rs.getString("Army_Birth");
             String Sex = rs.getString("Sex");
             String Address = rs.getString("Address");
