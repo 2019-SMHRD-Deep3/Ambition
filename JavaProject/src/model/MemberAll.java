@@ -34,25 +34,25 @@ public class MemberAll {
       return Army_id;
    }
    
-   public String getSex() {
-      return Sex;
-   }
-
    public void setArmy_id(String army_id) {
-      Army_id = army_id;
+	   Army_id = army_id;
    }
 
    public String getArmy_name() {
       return Army_name;
+   }
+   public void setArmy_name(String army_name) {
+	   Army_name = army_name;
+   }
+   
+   public String getSex() {
+	   return Sex;
    }
    
    public void setSex(String sex) {
       Sex = sex;
    }
 
-   public void setArmy_name(String army_name) {
-      Army_name = army_name;
-   }
 
    public String getArmy_birth() {
       return Army_birth;

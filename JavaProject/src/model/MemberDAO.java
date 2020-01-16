@@ -149,7 +149,7 @@ public class MemberDAO {
          
             
             
-            list.add(new MemberAll(Army_id, ArmyClass,Mos, Army_Name, Army_Birth, Sex, Address, BloodType, Vacation, Enlist, Discharge  ));
+            list.add(new MemberAll(Army_id, ArmyClass, Mos, Army_Name, Army_Birth, Sex, Address, BloodType, Vacation, Enlist, Discharge  ));
          }
 
          
