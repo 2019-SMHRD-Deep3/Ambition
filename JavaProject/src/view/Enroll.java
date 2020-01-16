@@ -35,6 +35,7 @@ public class Enroll {
    MemberManagementService service = new MemberManagementService();
    private JTextField SEX;
    private mainpa window;
+   private JButton button;
 
    /**
     * Launch the application.
@@ -150,7 +151,7 @@ public class Enroll {
       panel_2.add(DISCHARGE);
       DISCHARGE.setColumns(10);
       
-      btnNewButton = new JButton("New button");
+      btnNewButton = new JButton("\uD655\uC778");
       btnNewButton.addMouseListener(new MouseAdapter() {
          @Override
          public void mouseClicked(MouseEvent e) {
@@ -186,6 +187,16 @@ public class Enroll {
       });
       btnNewButton.setBounds(450, 124, 97, 23);
       panel.add(btnNewButton);
+      
+      button = new JButton("\uCDE8\uC18C");
+      button.addMouseListener(new MouseAdapter() {
+      	@Override
+      	public void mouseClicked(MouseEvent e) {
+      		frame.dispose();
+      	}
+      });
+      button.setBounds(559, 124, 97, 23);
+      panel.add(button);
       
        
    }
