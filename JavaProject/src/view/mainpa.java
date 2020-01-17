@@ -7,6 +7,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -14,13 +16,17 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -30,12 +36,6 @@ import javax.swing.table.TableColumnModel;
 import controller.MemberManagementService;
 import model.MemberAll;
 import model.MemberDAO;
-
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class mainpa {
    MemberDAO dao = new MemberDAO();
@@ -50,7 +50,25 @@ public class mainpa {
    String SArmyClass;
    String SArmyMos;
    String nameselect;
+   String SArmyDelete;
+   String Army_nameDelte;  //테이블선택값 가지고있음.
+   static int index1;
+   static String ID;
+   static String CLASS;
+   static String MOS;
+   static String NAME;
+   static String BIRTH;
+   static String SEX;
+   static String ADDRESS;
+   static String BLOODTYPE;
+   static String VACATION;
+   static String ENLIST;
+   static String DISCHARGE;
+   static String RANK;
+
+   
    private JTextField textField;
+   
 
    /**
     * Launch the application.
@@ -166,15 +184,80 @@ public class mainpa {
          @Override
          public void mouseClicked(MouseEvent e) {
             Enroll join = new Enroll(window);
+            
 
          }
       });
       
+      JButton btnNewButton_3 = new JButton("수정");
+      btnNewButton_3.addMouseListener(new MouseAdapter() {
+      
+   
+      @Override
+         public void mouseClicked(MouseEvent e) {
+         index1 = table.getSelectedRow();
+             ID = (String)table.getValueAt(index1, 0);
+             CLASS = (String)table.getValueAt(index1, 1);
+             MOS = (String)table.getValueAt(index1, 2);
+             NAME = (String)table.getValueAt(index1, 3);
+             BIRTH = (String)table.getValueAt(index1, 4);
+             SEX = (String)table.getValueAt(index1, 5);
+             ADDRESS = (String)table.getValueAt(index1, 6);
+             BLOODTYPE = (String)table.getValueAt(index1, 7);
+             VACATION = (String)table.getValueAt(index1, 8);
+             ENLIST = (String)table.getValueAt(index1, 9);
+             DISCHARGE = (String)table.getValueAt(index1, 10);
+             RANK = (String)table.getValueAt(index1, 11);
+            Update join = new Update(window);
+             
+    
+//         System.out.println(ID);
+
+            
+         }
+
+   
+      });
+      
+      
+      
+      JButton btnNewButton_4 = new JButton("삭제");
+      btnNewButton_4.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseClicked(MouseEvent e) {
+            int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if(result == JOptionPane.CLOSED_OPTION){
+               
+            }else if(result == JOptionPane.YES_OPTION) {
+//               예를 선택한경우
+               int index = table.getSelectedRow();
+               Army_nameDelte = (String)table.getValueAt(index, 0);
+               
+//               System.out.println(table.getValueAt(index, 0));
+               showDelete();
+               
+            }else{
+//               아니오를 선택한 경우
+            }
+            
+            
+         }
+      });
+      btnNewButton_4.setFont(new Font("굴림체", Font.BOLD, 12));
+      btnNewButton_4.setBackground(Color.WHITE);
+      btnNewButton_4.setBounds(890, 170, 80, 23);
+      HumanMangement.add(btnNewButton_4);
+      
+      btnNewButton_3.setBackground(Color.WHITE);
+      btnNewButton_3.setBounds(800, 170, 80, 23);
+      HumanMangement.add(btnNewButton_3);
+      
       JButton btnNewButton_2 = new JButton("\uC774\uB984");
       btnNewButton_2.setBounds(270, 170, 60, 21);
+      
       HumanMangement.add(btnNewButton_2);
       btnNewButton_1.setBackground(Color.WHITE);
-      btnNewButton_1.setBounds(900, 150, 80, 23);
+      btnNewButton_1.setBounds(710, 170, 80, 23);
       HumanMangement.add(btnNewButton_1);
 
       scrollPane = new JScrollPane();
@@ -235,17 +318,6 @@ public class mainpa {
       textField.setBounds(330, 170, 70, 22);
       HumanMangement.add(textField);
       textField.setColumns(10);
-      
-      JButton btnNewButton_3 = new JButton("\uC218\uC815");
-      btnNewButton_3.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            
-            
-         }
-      });
-      btnNewButton_3.setBounds(200, 200, 97, 23);
-      HumanMangement.add(btnNewButton_3);
       
       
       
@@ -424,7 +496,122 @@ public class mainpa {
       panel.add(lblNewLabel_1);
    }
 
-   protected void show_SArmyClass() {
+   public static int getIndex1() {
+   return index1;
+}
+
+public void setIndex1(int index1) {
+   this.index1 = index1;
+}
+public static String getID() {
+   return ID;
+}
+
+public void setID(String iD) {
+   ID = iD;
+}
+
+public static String getCLASS() {
+   return CLASS;
+}
+
+public void setCLASS(String cLASS) {
+   CLASS = cLASS;
+}
+
+public static String getMOS() {
+   return MOS;
+}
+
+public void setMOS(String mOS) {
+   MOS = mOS;
+}
+
+public static String getNAME() {
+   return NAME;
+}
+
+public void setNAME(String nAME) {
+   NAME = nAME;
+}
+
+public static String getBIRTH() {
+   return BIRTH;
+}
+
+public void setBIRTH(String bIRTH) {
+   BIRTH = bIRTH;
+}
+
+public static String getSEX() {
+   return SEX;
+}
+
+public void setSEX(String sEX) {
+   SEX = sEX;
+}
+
+public static String getADDRESS() {
+   return ADDRESS;
+}
+
+public void setADDRESS(String aDDRESS) {
+   ADDRESS = aDDRESS;
+}
+
+public static String getBLOODTYPE() {
+   return BLOODTYPE;
+}
+
+public void setBLOODTYPE(String bLOODTYPE) {
+   BLOODTYPE = bLOODTYPE;
+}
+
+public static String getVACATION() {
+   return VACATION;
+}
+
+public void setVACATION(String vACATION) {
+   VACATION = vACATION;
+}
+
+public static String getENLIST() {
+   return ENLIST;
+}
+
+public void setENLIST(String eNLIST) {
+   ENLIST = eNLIST;
+}
+
+public static String getDISCHARGE() {
+   return DISCHARGE;
+}
+
+public void setDISCHARGE(String dISCHARGE) {
+   DISCHARGE = dISCHARGE;
+}
+
+public static String getRANK() {
+   return RANK;
+}
+
+public void setRANK(String rANK) {
+   RANK = rANK;
+}
+
+
+protected void showDelete() {
+      String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
+               "BloodType", "Vacation", "Enlist", "Discharge","Salary"
+
+         };
+       dao.selectDelete(Army_nameDelte);
+       show();
+      }
+   
+
+
+protected void show_SArmyClass() {
       String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
                "BloodType", "Vacation", "Enlist", "Discharge","Salary"
 

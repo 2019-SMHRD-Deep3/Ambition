@@ -7,11 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import view.mainpa;
+
 public class MemberDAO {
 
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "hr";
-	private String password = "hr";
+	private String user = "jun";
+	private String password = "jun";
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
@@ -154,6 +156,59 @@ public class MemberDAO {
 			}
 		}
 		return UpdateVacation; // 생성된 로그인정보를 주려고 리턴시킨다. 생성안되면 null이들어있을것.
+	}
+
+	public void selectDelete(String Army_nameDelte) {
+
+		MemberAll selectDelete = null;
+
+		try { // try~catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password); // 커넥션객체
+			String sql = null;
+
+			if (Army_nameDelte.length() == 10) {
+
+				sql = "delete from army where army_id = ?";
+
+			} else if (Army_nameDelte.length() == 8) {
+				sql = "delete from sous where army_id = ?";
+
+			} else if (Army_nameDelte.length() == 6) {
+				sql = "delete from officer where army_id = ?";
+
+			} else {
+				sql = null;
+			}
+
+			System.out.println(Army_nameDelte);
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, Army_nameDelte);
+
+			int rs = psmt.executeUpdate(); // 실행하는것.
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // class 객체를 생성해서 메모리에 올려주는 역할.
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close(); // SELECT는 리졸트셋이 하나더열려있어서 닫는것도 하나더.
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		// 생성된 로그인정보를 주려고 리턴시킨다. 생성안되면 null이들어있을것.
 	}
 
 	public ArrayList<MemberAll> selectAll() {
@@ -454,6 +509,97 @@ public class MemberDAO {
 		}
 		return rows; // 줄수를 리퉌
 
+	}
+
+	public int Update(MemberAll m) {
+
+		MemberAll Update = null;
+
+		int rs = 0;
+
+		try { // try~catch 예외처리
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, user, password); // 커넥션객체
+			String sql = null;
+			if (m.getArmy_id().length() == 10) {
+
+				sql = "update army set armyClass = ?, MOS = ?, army_name = ?, army_birth = ?, sex = ?, address = ?, bloodtype = ?, vacation = ?, enlist = ?, discharge = ?, rank = ? where army_id = ?";
+			} else if (m.getArmy_id().length() == 8) {
+				sql = "update sous  set  armyClass= ?, MOS =? , army_name = ?, army_birth = ?, sex = ?, address = ?, bloodtype = ?, vacation = ?, enlist = ?, discharge = ? , rank = ? where army_id = ?";
+
+			} else if (m.getArmy_id().length() == 6) {
+				sql = "update officer  set  armyClass= ?, MOS =? , army_name = ?, army_birth = ?, sex = ?, address = ?, bloodtype = ?, vacation = ?, enlist = ?, discharge = ? , rank = ? where army_id = ?";
+
+			} else {
+				sql = null;
+			}
+
+			psmt = conn.prepareStatement(sql);
+
+			System.out.println(m.getArmyClass());
+			System.out.println(m.getMos());
+			System.out.println(m.getArmy_name());
+			System.out.println(m.getArmy_birth());
+			System.out.println(m.getSex());
+			System.out.println(m.getAddress());
+			System.out.println(m.getBloodType());
+			System.out.println(m.getVacaTion());
+			System.out.println(m.getEnlist());
+			System.out.println(m.getDischarge());
+			System.out.println(m.getVacaTion());
+			System.out.println(m.getRANK());
+			System.out.println(m.getArmy_id());
+			// 매개변수 m 에서 가져오기
+			System.out.println(m.getBloodType());
+			psmt.setString(1, m.getArmyClass());
+			psmt.setString(2, m.getMos());
+			psmt.setString(3, m.getArmy_name());
+			psmt.setString(4, m.getArmy_birth());
+			psmt.setString(5, m.getSex());
+			psmt.setString(6, m.getAddress());
+			psmt.setString(7, m.getBloodType());
+			psmt.setString(8, m.getVacaTion());
+			psmt.setString(9, m.getEnlist());
+			psmt.setString(10, m.getDischarge());
+			psmt.setString(11, m.getRANK());
+			psmt.setString(12, m.getArmy_id());
+
+//         psmt.setString(1, mainpa.getCLASS());
+//         psmt.setString(2, mainpa.getMOS());
+//         psmt.setString(3, mainpa.getNAME());
+//         psmt.setString(4, mainpa.getBIRTH());
+//         psmt.setString(5, mainpa.getSEX());
+//         psmt.setString(6, mainpa.getADDRESS());
+//         psmt.setString(7, mainpa.getBLOODTYPE());
+//         psmt.setString(8, mainpa.getVACATION());
+//         psmt.setString(9, mainpa.getENLIST());
+//         psmt.setString(10, mainpa.getDISCHARGE());
+//         psmt.setString(11, mainpa.getRANK());
+//         psmt.setString(12, mainpa.getID());
+//         
+			rs = psmt.executeUpdate(); // 실행하는것.
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // class 객체를 생성해서 메모리에 올려주는 역할.
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// SELECT는 리졸트셋이 하나더열려있어서 닫는것도 하나더.
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return rs; // 생성된 로그인정보를 주려고 리턴시킨다. 생성안되면 null이들어있을것.
 	}
 
 }

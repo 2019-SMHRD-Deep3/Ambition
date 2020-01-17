@@ -32,6 +32,11 @@ public class MemberManagementService {
       return UpdateVacation;
    }
    
+   public int Update(MemberAll m) {
+      int Update = dao.Update(m);
+      return Update;
+   }
+   
    public boolean memberEnroll(MemberAll member) {
       int rows = dao.insert(member);
       if(rows == 0) {

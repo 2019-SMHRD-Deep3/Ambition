@@ -394,11 +394,11 @@ public class CalendarCard extends JPanel {
          MemberAll UpdateVacation = service.VacationUpdate(m);//회원정보 넘겨주기 리턴설계 로그인성공시 객체를 리턴을 받고 화면을 넘어다녀도 계속유지되도록한다.
          if(UpdateVacation==null) {
             JOptionPane.showMessageDialog(frame,
-                   "등록 성공");
+                  "등록 성공.");
+            
          }else {
             JOptionPane.showMessageDialog(frame,
-                   "등록 실패 군번을 확인해주세요.");
-            
+                  "등록 실패 군번을 확인해주세요");
             
             
          }
