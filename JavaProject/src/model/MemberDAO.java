@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class MemberDAO {
 
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "jun";
-	private String password = "jun";
+	private String user = "hr";
+	private String password = "hr";
 	private Connection conn = null;
 	private PreparedStatement psmt = null;
 	private ResultSet rs = null;
