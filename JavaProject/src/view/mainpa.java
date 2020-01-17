@@ -97,97 +97,96 @@ public class mainpa {
     * Initialize the contents of the frame.
     */
    private void initialize() {
-      frame = new JFrame();
-      frame.setBounds(100, 100, 1300, 700);
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.getContentPane().setLayout(null);
+	   frame = new JFrame();
+	      frame.setBounds(100, 100, 1300, 700);
+	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      frame.getContentPane().setLayout(null);
 
-      JPanel panel_2 = new JPanel();
-      panel_2.setBounds(293, 0, 991, 661);
-      frame.getContentPane().add(panel_2);
-      panel_2.setLayout(null);
+	      JPanel panel_2 = new JPanel();
+	      panel_2.setBounds(293, 0, 991, 661);
+	      frame.getContentPane().add(panel_2);
+	      panel_2.setLayout(null);
+	      
+	            JPanel MainView = new JPanel();
+	            MainView.setBackground(new Color(255, 255, 255));
+	            MainView.setBounds(0, 0, 991, 661);
+	            panel_2.add(MainView);
+	            MainView.setLayout(null);
+	            
+	                  JLabel lblNewLabel_2 = new JLabel("New label");
+	                  lblNewLabel_2.setIcon(new ImageIcon("C:\\image\\\uBE44\uD589\uAE301.png"));
+	                  lblNewLabel_2.setBounds(-102, 0, 1093, 661);
+	                  MainView.add(lblNewLabel_2);
 
-      JPanel MainView = new JPanel();
-      MainView.setBackground(new Color(255, 255, 255));
-      MainView.setBounds(0, 0, 991, 661);
-      panel_2.add(MainView);
-      MainView.setLayout(null);
+	      JPanel LocationInfo = new JPanel();
+	      LocationInfo.setBounds(0, 0, 991, 661);
+	      panel_2.add(LocationInfo);
+	      LocationInfo.setBackground(new Color(255, 255, 255));
+	      LocationInfo.setLayout(null);
 
-      JLabel lblNewLabel_2 = new JLabel("New label");
-      lblNewLabel_2.setIcon(new ImageIcon("C:\\image\\\uBE44\uD589\uAE301.png"));
-      lblNewLabel_2.setBounds(-102, 0, 1093, 661);
-      MainView.add(lblNewLabel_2);
+	      JLabel lblClick = new JLabel("\u261CClick");
+	      lblClick.setBackground(new Color(255, 250, 250));
+	      lblClick.setForeground(new Color(199, 21, 133));
+	      lblClick.setFont(new Font("맑은 고딕", Font.BOLD, 22));
+	      lblClick.setBounds(687, 259, 94, 28);
+	      LocationInfo.add(lblClick);
 
-      JPanel LocationInfo = new JPanel();
-      LocationInfo.setBounds(0, 0, 991, 661);
-      panel_2.add(LocationInfo);
-      LocationInfo.setBackground(new Color(255, 255, 255));
-      LocationInfo.setLayout(null);
+	      JLabel lblNewLabel_3 = new JLabel("");
+	      lblNewLabel_3.setIcon(new ImageIcon("C:\\image\\KakaoTalk_20200117_094631561.png"));
+	      lblNewLabel_3.setBounds(0, 0, 991, 661);
+	      LocationInfo.add(lblNewLabel_3);
 
-      JLabel lblClick = new JLabel("\u261CClick");
-      lblClick.setBackground(new Color(255, 250, 250));
-      lblClick.setForeground(new Color(199, 21, 133));
-      lblClick.setFont(new Font("맑은 고딕", Font.BOLD, 22));
-      lblClick.setBounds(758, 262, 94, 28);
-      LocationInfo.add(lblClick);
+	      JButton btnNewButton = new JButton("");
+	      btnNewButton.setBounds(600, 259, 120, 65);
+	      LocationInfo.add(btnNewButton);
+	      btnNewButton.setForeground(Color.WHITE);
+	      btnNewButton.setFont(new Font("함초롬바탕", Font.PLAIN, 13));
+	      btnNewButton.addMouseListener(new MouseAdapter() {
+	         @Override
+	         public void mouseClicked(MouseEvent e) {
+	            Desktop d = Desktop.getDesktop();
+	            try {
+	               d.browse(new URI(
+	                  "https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%86%A1%EC%95%94%EB%A1%9C%2060%20%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0?c=14123855.5344141,4178896.8350967,17,0,0,0,dh"));
+	            } catch (IOException e1) {
+	               // TODO Auto-generated catch block
+	               e1.printStackTrace();
+	            } catch (URISyntaxException e1) {
+	               // TODO Auto-generated catch block
+	               e1.printStackTrace();
+	            }
+	         }
+	      });
+	      btnNewButton.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
+	      btnNewButton.setEnabled(false);
+	      btnNewButton.setBackground(new Color(0, 0, 0, 0));
 
-      JLabel lblNewLabel_3 = new JLabel("");
-      lblNewLabel_3.setIcon(new ImageIcon("C:\\image\\\uC624\uC2DC\uB294\uAE382.png"));
-      lblNewLabel_3.setBounds(0, 0, 991, 661);
-      LocationInfo.add(lblNewLabel_3);
+	      JPanel UnitIntroduce = new JPanel();
+	      UnitIntroduce.setBackground(new Color(214, 220, 229));
+	      UnitIntroduce.setBounds(0, 0, 991, 661);
+	      panel_2.add(UnitIntroduce);
+	      UnitIntroduce.setLayout(null);
 
-      JButton btnNewButton = new JButton("");
-      btnNewButton.setBounds(677, 252, 120, 65);
-      LocationInfo.add(btnNewButton);
-      btnNewButton.setForeground(Color.WHITE);
-      btnNewButton.setFont(new Font("함초롬바탕", Font.PLAIN, 13));
-      btnNewButton.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            Desktop d = Desktop.getDesktop();
-            try {
-               d.browse(new URI(
-                     "https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%86%A1%EC%95%94%EB%A1%9C%2060%20%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0?c=14123855.5344141,4178896.8350967,17,0,0,0,dh"));
-            } catch (IOException e1) {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            } catch (URISyntaxException e1) {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-            }
-         }
-      });
-      btnNewButton.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
-      btnNewButton.setEnabled(false);
-      btnNewButton.setBackground(new Color(0, 0, 0, 0));
+	      JLabel lblNewLabel_4 = new JLabel("");
+	      lblNewLabel_4.setIcon(new ImageIcon("C:\\image\\\uCC28\uC900\uC12D\uC6D0\uC7A5.png"));
+	      lblNewLabel_4.setBounds(0, 0, 991, 661);
+	      UnitIntroduce.add(lblNewLabel_4);
 
-      JPanel UnitIntroduce = new JPanel();
-      UnitIntroduce.setBackground(new Color(214, 220, 229));
-      UnitIntroduce.setBounds(0, 0, 991, 661);
-      panel_2.add(UnitIntroduce);
-      UnitIntroduce.setLayout(null);
+	      JPanel HumanMangement = new JPanel();
+	      HumanMangement.setBackground(Color.WHITE);
+	      HumanMangement.setBounds(0, 0, 991, 661);
+	      panel_2.add(HumanMangement);
+	      HumanMangement.setLayout(null);// 추가한것
 
-      JLabel lblNewLabel_4 = new JLabel("");
-      lblNewLabel_4.setIcon(new ImageIcon("C:\\image\\\uCC28\uC900\uC12D\uC6D0\uC7A5.png"));
-      lblNewLabel_4.setBounds(0, 0, 991, 661);
-      UnitIntroduce.add(lblNewLabel_4);
+	      // 추가한공간 시작
+	      JButton btnNewButton_1 = new JButton("\uB4F1\uB85D");
+	      btnNewButton_1.addMouseListener(new MouseAdapter() {
+	         @Override
+	         public void mouseClicked(MouseEvent e) {
+	            Enroll join = new Enroll(window);
 
-      JPanel HumanMangement = new JPanel();
-      HumanMangement.setBackground(Color.WHITE);
-      HumanMangement.setBounds(0, 0, 991, 661);
-      panel_2.add(HumanMangement);
-      HumanMangement.setLayout(null);// 추가한것
-
-      // 추가한공간 시작
-      JButton btnNewButton_1 = new JButton("\uB4F1\uB85D");
-      btnNewButton_1.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            Enroll join = new Enroll(window);
-            
-
-         }
-      });
+	         }
+	      });
       
       JButton btnNewButton_3 = new JButton("수정");
       btnNewButton_3.addMouseListener(new MouseAdapter() {
@@ -260,6 +259,12 @@ public class mainpa {
       btnNewButton_1.setBounds(710, 170, 80, 23);
       HumanMangement.add(btnNewButton_1);
 
+      JLabel lblNewLabel_7 = new JLabel("");
+      lblNewLabel_7.setIcon(new ImageIcon("C:\\image\\\uC778\uC6D0\uAD00\uB9AC.png"));
+      lblNewLabel_7.setBounds(0, 0, 991, 151);
+      HumanMangement.add(lblNewLabel_7);
+      
+      
       scrollPane = new JScrollPane();
       scrollPane.setBounds(0, 200, 991, 400);
       HumanMangement.add(scrollPane);
@@ -328,46 +333,73 @@ public class mainpa {
       Attend.setBounds(0, 0, 991, 661);
       panel_2.add(Attend); //주석처리는 앞에 안보이게
       Attend.setLayout(new CardLayout(0, 0));
-
-      JPanel 달력패널 = new JPanel();
-      Attend.add(달력패널, "name_2787805674265200");
-      달력패널.setLayout(null);
-
-      JPanel 달력뷰 = new JPanel();
-      달력뷰.setBounds(0, 100, 988, 513);
-      달력패널.add(달력뷰);
-      cardLayout = new CardLayout(0, 0);
-      달력뷰.setLayout(cardLayout);
-
-      JButton BtnNewButton = new JButton("\uC774\uC804\uB2EC");
-      BtnNewButton.setBounds(366, 612, 79, 23);
-      달력패널.add(BtnNewButton);
-
-      JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
-      BtnNewButton_1.setBounds(500, 612, 73, 23);
-      달력패널.add(BtnNewButton_1);
-      BtnNewButton_1.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            cardLayout.next(달력뷰);
-         }
-      });
-      BtnNewButton.addMouseListener(new MouseAdapter() {
-         @Override
-         public void mouseClicked(MouseEvent e) {
-            cardLayout.previous(달력뷰);
-         }
-      });
+      
+            JPanel 달력패널 = new JPanel();
+            달력패널.setBackground(new Color(255, 255, 255));
+            Attend.add(달력패널, "name_2787805674265200");
+            달력패널.setLayout(null);
+            
+                  JPanel 달력뷰 = new JPanel();
+                  달력뷰.setBounds(0, 127, 988, 486);
+                  달력패널.add(달력뷰);
+                  cardLayout = new CardLayout(0, 0);
+                  달력뷰.setLayout(cardLayout);
+                  
+                  for (int i = 0; i < 12; i++) {
+                      달력뷰.add(new CalendarCard((i + 1) + "월", numOfdays[i]));
+                   }
+                  
+                        JButton BtnNewButton = new JButton("\uC774\uC804\uB2EC");
+                        BtnNewButton.setBackground(new Color(0, 0, 51));
+                        BtnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
+                        BtnNewButton.setForeground(new Color(255, 255, 255));
+                        BtnNewButton.setBounds(389, 623, 79, 23);
+                        달력패널.add(BtnNewButton);
+                        
+                              JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
+                              BtnNewButton_1.setBackground(new Color(0, 0, 51));
+                              BtnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
+                              BtnNewButton_1.setForeground(new Color(255, 255, 255));
+                              BtnNewButton_1.setBounds(484, 623, 73, 23);
+                              달력패널.add(BtnNewButton_1);
+                              
+                              JLabel lblNewLabel_5 = new JLabel("");
+                              lblNewLabel_5.setBackground(new Color(255, 255, 255));
+                              lblNewLabel_5.setIcon(new ImageIcon("C:\\image\\\uCD9C\uD0C0\uAD00\uB9AC3.png"));
+                              lblNewLabel_5.setBounds(0, 0, 991, 128);
+                              달력패널.add(lblNewLabel_5);
+                              BtnNewButton_1.addMouseListener(new MouseAdapter() {
+                                 @Override
+                                 public void mouseClicked(MouseEvent e) {
+                                    cardLayout.next(달력뷰);
+                                 }
+                              });
+                              BtnNewButton.addMouseListener(new MouseAdapter() {
+                                 @Override
+                                 public void mouseClicked(MouseEvent e) {
+                                    cardLayout.previous(달력뷰);
+                                 }
+                              });
 
       for (int i = 0; i < 12; i++) {
          달력뷰.add(new CalendarCard((i + 1) + "월", numOfdays[i]));
       }
 
+      
+      
+      
       JPanel OrganizationChart = new JPanel();
-      OrganizationChart.setBackground(new Color(102, 255, 255));
+      OrganizationChart.setLayout(new CardLayout(0, 0));
+      PanelTest panelTest = new PanelTest();
+      OrganizationChart.add(panelTest, "name_2878821101757000");
+      
+      JLabel lblNewLabel_6 = new JLabel("");
+      lblNewLabel_6.setBounds(0, 0, 991, 130);
+      panelTest.add(lblNewLabel_6);
+      lblNewLabel_6.setIcon(new ImageIcon("C:\\image\\\uC870\uC9C1\uB3C4.png"));
+      OrganizationChart.setBackground(Color.WHITE);
       OrganizationChart.setBounds(0, 0, 991, 661);
       panel_2.add(OrganizationChart);
-      OrganizationChart.setLayout(null);
 
       JPanel panel = new JPanel();
       panel.setBackground(new Color(0, 0, 51));
@@ -403,7 +435,6 @@ public class mainpa {
             panel_2.add(HumanMangement);
             panel_2.repaint();
             panel_2.revalidate();
-            show();
          }
       });
       label.setFont(new Font("굴림", Font.BOLD, 16));
