@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -21,14 +23,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import controller.MemberManagementService;
 import model.MemberAll;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JScrollBar;
+import model.MemberDAO;
+
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class mainpa {
+   MemberDAO dao = new MemberDAO();
    private JFrame frame;
    private CardLayout cardLayout;
    private MemberManagementService service = new MemberManagementService();
@@ -37,6 +47,10 @@ public class mainpa {
    private JTable table;
    private JScrollPane scrollPane;
    private static mainpa window;
+   String SArmyClass;
+   String SArmyMos;
+   String nameselect;
+   private JTextField textField;
 
    /**
     * Launch the application.
@@ -155,22 +169,92 @@ public class mainpa {
 
          }
       });
+      
+      JButton btnNewButton_2 = new JButton("\uC774\uB984");
+      btnNewButton_2.setBounds(270, 170, 60, 21);
+      HumanMangement.add(btnNewButton_2);
       btnNewButton_1.setBackground(Color.WHITE);
       btnNewButton_1.setBounds(900, 150, 80, 23);
       HumanMangement.add(btnNewButton_1);
 
       scrollPane = new JScrollPane();
-      scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-      
-      scrollPane.setBounds(0, 200, 991, 461);
+      scrollPane.setBounds(0, 200, 991, 400);
       HumanMangement.add(scrollPane);
+      
+      JComboBox comboBox = new JComboBox();
+      comboBox.setModel(new DefaultComboBoxModel(new String[] {"\uACC4\uAE09", "\uC774\uB4F1\uBCD1", "\uC77C\uBCD1", "\uC0C1\uBCD1", "\uBCD1\uC7A5", "\uD558\uC0AC", "\uC911\uC0AC", "\uC0C1\uC0AC", "\uC18C\uC704", "\uC911\uC704", "\uB300\uC704", "\uC18C\uB839", "\uC911\uB839"}));
+      comboBox.setBounds(100, 170, 70, 21);
+      HumanMangement.add(comboBox);
+      
+      comboBox.addItemListener(new ItemListener() {
 
+         @Override
+         public void itemStateChanged(ItemEvent e) {
+            // TODO Auto-generated method stub
+            if (e.getStateChange() == 1) {
+
+               SArmyClass = (String) e.getItem();
+               show_SArmyClass();
+            }
+
+         }
+      });
+
+      JComboBox comboBox_1 = new JComboBox();
+      comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"병과","수송","작전","통신","의무","탄약"}));
+      comboBox_1.setBounds(200, 170, 60, 21);
+      HumanMangement.add(comboBox_1);
+      
+     
+      
+      comboBox_1.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+               // TODO Auto-generated method stub
+               if (e.getStateChange() == 1) {
+
+                  SArmyMos = (String) e.getItem();
+                  show_SArmyMos();
+               }
+
+            }
+         });
+      
+      textField = new JTextField();
+      textField.addKeyListener(new KeyAdapter() {
+         @Override
+         // 엔터쳤을때 실행되게.
+         public void keyTyped(KeyEvent e) {
+            if(KeyEvent.VK_ENTER == e.getKeyChar()) {
+               nameselect = textField.getText();
+               show_SArmyName();
+            }
+         }
+      });
+      textField.setBounds(330, 170, 70, 22);
+      HumanMangement.add(textField);
+      textField.setColumns(10);
+      
+      JButton btnNewButton_3 = new JButton("\uC218\uC815");
+      btnNewButton_3.addMouseListener(new MouseAdapter() {
+         @Override
+         public void mouseClicked(MouseEvent e) {
+            
+            
+         }
+      });
+      btnNewButton_3.setBounds(200, 200, 97, 23);
+      HumanMangement.add(btnNewButton_3);
+      
+      
+      
       show();
       // 추가한 공간 끝
       JPanel Attend = new JPanel();
       Attend.setBackground(new Color(240, 240, 240));
       Attend.setBounds(0, 0, 991, 661);
-//      panel_2.add(Attend); //주석처리는 앞에 안보이게
+      panel_2.add(Attend); //주석처리는 앞에 안보이게
       Attend.setLayout(new CardLayout(0, 0));
 
       JPanel 달력패널 = new JPanel();
@@ -247,6 +331,7 @@ public class mainpa {
             panel_2.add(HumanMangement);
             panel_2.repaint();
             panel_2.revalidate();
+            show();
          }
       });
       label.setFont(new Font("굴림", Font.BOLD, 16));
@@ -339,27 +424,183 @@ public class mainpa {
       panel.add(lblNewLabel_1);
    }
 
-   public void show() {
+   protected void show_SArmyClass() {
       String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
-            "BloodType", "Vacation", "Enlist", "Discharge"
+               "BloodType", "Vacation", "Enlist", "Discharge","Salary"
+
+         };
+      ArrayList<MemberAll> list = dao.selectClass(SArmyClass);
+
+         Object[][] data = new Object[list.size()][12];
+         for (int i = 0; i < list.size(); i++) {
+            MemberAll m = list.get(i);
+            data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getMos(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),
+                  m.getAddress(), m.getBloodType(), m.getVacaTion(), m.getEnlist(), m.getDischarge(),  m.getRANK()};
+         }
+         table = new JTable(data, columnNames);
+         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumn column = null;
+         
+         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(); // 디폴트테이블셀렌더러를 생성
+         dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+         TableColumnModel tcm = table.getColumnModel();
+         
+         tcm.getColumn(1).setCellRenderer(dtcr);  
+         tcm.getColumn(2).setCellRenderer(dtcr);
+         tcm.getColumn(3).setCellRenderer(dtcr);
+         tcm.getColumn(4).setCellRenderer(dtcr);
+         tcm.getColumn(5).setCellRenderer(dtcr);
+         tcm.getColumn(7).setCellRenderer(dtcr);
+         tcm.getColumn(8).setCellRenderer(dtcr);
+         
+         for (int i = 0; i < 12; i++) {
+            column = table.getColumnModel().getColumn(i);
+            if ( i == 5) {
+               column.setPreferredWidth(50); // third column is bigger
+            } else if(i==6){
+               column.setPreferredWidth(140);
+            } else if(i==4||i==2) {
+               column.setPreferredWidth(70);
+            }
+            else {
+               column.setPreferredWidth(100);
+            }
+         }
+         scrollPane.setViewportView(table);
+      }
+   
+   protected void show_SArmyMos() {
+      String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
+               "BloodType", "Vacation", "Enlist", "Discharge","Salary"
+
+         };
+      ArrayList<MemberAll> list = dao.selectMos(SArmyMos);
+
+         Object[][] data = new Object[list.size()][12];
+         for (int i = 0; i < list.size(); i++) {
+            MemberAll m = list.get(i);
+            data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getMos(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),
+                  m.getAddress(), m.getBloodType(), m.getVacaTion(), m.getEnlist(), m.getDischarge(),  m.getRANK()};
+         }
+         table = new JTable(data, columnNames);
+         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumn column = null;
+         
+         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(); // 디폴트테이블셀렌더러를 생성
+         dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+         TableColumnModel tcm = table.getColumnModel();
+         
+         tcm.getColumn(1).setCellRenderer(dtcr);  
+         tcm.getColumn(2).setCellRenderer(dtcr);
+         tcm.getColumn(3).setCellRenderer(dtcr);
+         tcm.getColumn(4).setCellRenderer(dtcr);
+         tcm.getColumn(5).setCellRenderer(dtcr);
+         tcm.getColumn(7).setCellRenderer(dtcr);
+         tcm.getColumn(8).setCellRenderer(dtcr);
+         
+         for (int i = 0; i < 12; i++) {
+            column = table.getColumnModel().getColumn(i);
+            if (   i == 5) {
+               column.setPreferredWidth(50); // third column is bigger
+            } else if(i==6){
+               column.setPreferredWidth(140);
+            } else if(i==4|| i == 2 ) {
+               column.setPreferredWidth(70);
+            }
+            else {
+               column.setPreferredWidth(100);
+            }
+         }
+         scrollPane.setViewportView(table);
+      }
+   
+   protected void show_SArmyName() {
+      String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
+               "BloodType", "Vacation", "Enlist", "Discharge","Salary"
+
+         };
+      ArrayList<MemberAll> list = dao.selectName(nameselect);
+
+         Object[][] data = new Object[list.size()][12];
+         for (int i = 0; i < list.size(); i++) {
+            MemberAll m = list.get(i);
+            data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getMos(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),
+                  m.getAddress(), m.getBloodType(), m.getVacaTion(), m.getEnlist(), m.getDischarge(),  m.getRANK()};
+         }
+         table = new JTable(data, columnNames);
+         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+         TableColumn column = null;
+         
+         DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(); // 디폴트테이블셀렌더러를 생성
+         dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+         TableColumnModel tcm = table.getColumnModel();
+         
+         tcm.getColumn(1).setCellRenderer(dtcr);  
+         tcm.getColumn(2).setCellRenderer(dtcr);
+         tcm.getColumn(3).setCellRenderer(dtcr);
+         tcm.getColumn(4).setCellRenderer(dtcr);
+         tcm.getColumn(5).setCellRenderer(dtcr);
+         tcm.getColumn(7).setCellRenderer(dtcr);
+         tcm.getColumn(8).setCellRenderer(dtcr);
+         
+         for (int i = 0; i < 12; i++) {
+            column = table.getColumnModel().getColumn(i);
+            if ( i == 5) {
+               column.setPreferredWidth(50); // third column is bigger
+            } else if(i==6){
+               column.setPreferredWidth(140);
+            } else if(i==4||i==2) {
+               column.setPreferredWidth(70);
+            }
+            else {
+               column.setPreferredWidth(100);
+            }
+         }
+         scrollPane.setViewportView(table);
+      }
+   
+   
+
+
+public void show() {
+      String[] columnNames = { "Army_id", "ArmyClass", "Mos", "Army_Name", "Army_Birth", "Sex", "AddRess",
+            "BloodType", "Vacation", "Enlist", "Discharge","Salary"
 
       };
       ArrayList<MemberAll> list = service.MemberAllLookup();
 
-      Object[][] data = new Object[list.size()][11];
+      Object[][] data = new Object[list.size()][12];
       for (int i = 0; i < list.size(); i++) {
          MemberAll m = list.get(i);
-         data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(),m.getMos(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),m.getAddress(),
-               m.getBloodType(),   m.getVacaTion(), m.getEnlist(), m.getDischarge() };
+         data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getMos(), m.getArmy_name(), m.getArmy_birth(), m.getSex(),
+               m.getAddress(), m.getBloodType(), m.getVacaTion(), m.getEnlist(), m.getDischarge(),  m.getRANK()};
       }
       table = new JTable(data, columnNames);
       table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
       TableColumn column = null;
-      for (int i = 0; i < 11; i++) {
+      
+      DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(); // 디폴트테이블셀렌더러를 생성
+      dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+      TableColumnModel tcm = table.getColumnModel();
+      
+      tcm.getColumn(1).setCellRenderer(dtcr);  
+      tcm.getColumn(2).setCellRenderer(dtcr);
+      tcm.getColumn(3).setCellRenderer(dtcr);
+      tcm.getColumn(4).setCellRenderer(dtcr);
+      tcm.getColumn(5).setCellRenderer(dtcr);
+      tcm.getColumn(7).setCellRenderer(dtcr);
+      tcm.getColumn(8).setCellRenderer(dtcr);
+      
+      for (int i = 0; i < 12; i++) {
          column = table.getColumnModel().getColumn(i);
-         if (i == 2 || i == 5) {
+         if (i == 5) {
             column.setPreferredWidth(50); // third column is bigger
-         } else {
+         } else if(i==6){
+            column.setPreferredWidth(140);
+         } else if(i == 2 || i==4) {
+            column.setPreferredWidth(70);
+         }
+         else {
             column.setPreferredWidth(100);
          }
       }
