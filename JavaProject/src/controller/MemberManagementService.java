@@ -27,6 +27,11 @@ public class MemberManagementService {
       return loginUser;
    }
    
+   public MemberAll VacationUpdate(MemberAll m) {
+      MemberAll UpdateVacation = dao.UpdateVacation(m);
+      return UpdateVacation;
+   }
+   
    public boolean memberEnroll(MemberAll member) {
       int rows = dao.insert(member);
       if(rows == 0) {
@@ -51,4 +56,8 @@ public class MemberManagementService {
       // TODO Auto-generated method stub
       return dao.selectAll();
    }
+
+   
+   
+   
 }
