@@ -154,6 +154,26 @@ alter table officer
 add constraint fk_salary_officer foreign key(rank)
 REFERENCES salary(rank);
 
+drop table vacation_view;
+create table vacation_view(
+army_id varchar2(20) primary key,
+armyClass varchar2(10) not null,
+army_name varchar2(20) not null,
+vacation varchar2(40),
+vacationstart varchar2(20),
+vacationfinish varchar2(20)
+);
+alter table vacation_view
+add constraint fk_vacation_armyClass_vacation foreign key(armyClass)
+REFERENCES armyClass(armyClass);
+alter table vacation_view
+add constraint fk_vacation_view_vacation foreign key(vacation)
+REFERENCES vacation(vacation);
+
+
+
+insert into vacation_view values ('0000000000','일병','수송','전','공식휴가','2010.01.13','2010.01.15');
+select * from vacation_view;
 
 create table logininfo (
 army_id varchar2(10) PRIMARY KEY,
@@ -162,12 +182,29 @@ PasswordCheck varchar2(10),
 Phonenumber number(10),
 sex varchar2(10));
 
+
+
+
+
+
+
 insert into army values ('0000000000','일병','수송','전준영','1','남','1','A',null,'1','1','일병');
+
+
+insert into ii values ('jsdifj','siofjsdf',14984198);
 
 update army set vacation = '?' where army_id = '?';
 commit;
 
+delete from army where army_id = '?';
+delete from sous where army_id = '?';
+delete from officer where army_id = '?';
+
 select * from army where armyClass = '일병';
+
+update army set (armyClass,MOS,army_name,army_birth,sex,address,bloodtype,vacation,enlist,discharge,rank) = '상병','탄약','전지수','2','여','광주광역시','B','비공식휴가','12','34','상병') where army_id = '1111111111';
+
+update army  set  armyClass='상병', MOS ='탄약' , army_name = '전준영', army_birth = '123', sex = '23', address = '123', bloodtype = '123', vacation = null where army_id = '1111111111';
 
 select a.army_id, s.army_id from army a, sous s where a.army_id = s.army_id; 
 
@@ -176,3 +213,38 @@ UNION all
 select a.army_id,a.armyclass,a.MOS,a.army_name,a.army_birth,a.sex,a.address,a.bloodtype,a.vacation,a.enlist,a.discharge,s.salary from army a, salary s where a.rank=s.rank
 UNION all 
 select so.army_id,so.armyclass,so.MOS,so.army_name,so.army_birth,so.sex,so.address,so.bloodtype,so.vacation,so.enlist,so.discharge,s.salary from sous so, salary s where so.rank=s.rank;
+
+
+
+
+
+
+
+
+
+
+create table supply(
+supply_id varchar2(20) primary key,
+supply_goods varchar2(30));
+insert into supply values ('01','k2');
+insert into supply values ('02','combat');
+insert into supply values ('03','boots');
+insert into supply values ('04','socks');
+insert into supply values ('05','underwear');
+insert into supply values ('06','tshirt');
+commit;
+drop table vacation_view;
+create table vacation_view(
+army_id varchar2(20) primary key,
+armyClass varchar2(10),
+army_name varchar2(20) not null,
+vacation varchar2(40)
+);
+alter table vacation_view
+add constraint fk_vacation_armyClass_vacation foreign key(armyClass)
+REFERENCES armyClass(armyClass);
+alter table vacation_view
+add constraint fk_vacation_view_vacation foreign key(vacation)
+REFERENCES vacation(vacation);
+
+select * from vacation_view;

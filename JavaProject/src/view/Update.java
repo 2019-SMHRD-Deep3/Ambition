@@ -42,7 +42,7 @@ public class Update {
    private JButton btnNewButton;
    MemberManagementService service = new MemberManagementService();
    private JTextField SEX;
-   private mainpa window;
+   private Mainpa window;
    private JTextField Salary;
 
    /**
@@ -54,7 +54,7 @@ public class Update {
     * 
     * @param window
     */
-   public Update(mainpa window) {
+   public Update(Mainpa window) {
       this.window = window;
       initialize();
       frame.setVisible(true);
@@ -164,66 +164,66 @@ public class Update {
       ID = new JTextField();
       panel_2.add(ID);
       ID.setColumns(10);
-      ID.setText(mainpa.getID()+"");
+      ID.setText(Mainpa.getID()+"");
 
       CLASS = new JTextField();
       panel_2.add(CLASS);
       CLASS.setColumns(10);
-      CLASS.setText(mainpa.getCLASS()+"");
+      CLASS.setText(Mainpa.getCLASS()+"");
 
       MOS = new JTextField();
       panel_2.add(MOS);
       MOS.setColumns(10);
-      MOS.setText(mainpa.getMOS());
+      MOS.setText(Mainpa.getMOS());
 
       NAME = new JTextField();
       panel_2.add(NAME);
       NAME.setColumns(10);
-      NAME.setText(mainpa.getNAME()+"");
+      NAME.setText(Mainpa.getNAME()+"");
 
       BIRTH = new JTextField();
       panel_2.add(BIRTH);
       BIRTH.setColumns(10);
-      BIRTH.setText(mainpa.getBIRTH()+"");
+      BIRTH.setText(Mainpa.getBIRTH()+"");
 
       SEX = new JTextField();
       panel_2.add(SEX);
       SEX.setColumns(10);
-      SEX.setText(mainpa.getSEX()+"");
+      SEX.setText(Mainpa.getSEX()+"");
 
       ADDRESS = new JTextField();
       panel_2.add(ADDRESS);
       ADDRESS.setColumns(10);
-     ADDRESS.setText(mainpa.getADDRESS()+"");
+     ADDRESS.setText(Mainpa.getADDRESS()+"");
 
       BLOOD = new JTextField();
       panel_2.add(BLOOD);
       BLOOD.setColumns(10);
-      BLOOD.setText(mainpa.getBLOODTYPE()+"");
+      BLOOD.setText(Mainpa.getBLOODTYPE()+"");
 
       VACATION = new JTextField();
       panel_2.add(VACATION);
       VACATION.setColumns(10);
-      if(mainpa.getVACATION()==null){
+      if(Mainpa.getVACATION()==null){
          VACATION.setText(null);
       }else {
-      VACATION.setText(mainpa.getVACATION()+"");
+      VACATION.setText(Mainpa.getVACATION()+"");
       }
 
       ENLIST = new JTextField();
       panel_2.add(ENLIST);
       ENLIST.setColumns(10);
-      ENLIST.setText(mainpa.getENLIST()+"");
+      ENLIST.setText(Mainpa.getENLIST()+"");
 
       DISCHARGE = new JTextField();
       panel_2.add(DISCHARGE);
       DISCHARGE.setColumns(10);
-      DISCHARGE.setText(mainpa.getDISCHARGE()+"");
+      DISCHARGE.setText(Mainpa.getDISCHARGE()+"");
 
       Salary = new JTextField();
       panel_2.add(Salary);
       Salary.setColumns(10);
-      Salary.setText(mainpa.getCLASS()+"");
+      Salary.setText(Mainpa.getCLASS()+"");
       
 
       btnNewButton = new JButton("\uB4F1\uB85D");
@@ -259,13 +259,15 @@ public class Update {
             
             if (result == 1) {
                JOptionPane.showMessageDialog(frame, "수정성공");
-               window.show();
+               
                frame.dispose(); // 화면종료
             } else {
                JOptionPane.showMessageDialog(frame, "수정실패");
             }
 
          }
+
+      
       });
       btnNewButton.setBounds(642, 124, 97, 23);
       panel.add(btnNewButton);
