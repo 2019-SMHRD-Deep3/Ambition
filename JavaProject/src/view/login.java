@@ -1,3 +1,4 @@
+
 package view;
 
 import java.awt.BorderLayout;
@@ -85,7 +86,6 @@ public class login {
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
 
-		
 		ImageIcon icon = new ImageIcon("C:\\image\\메인이미지4.PNG");
 
 		panel = new JPanel() {
@@ -152,13 +152,18 @@ public class login {
 				Member m = new Member(infoid, infopw);
 				// 로그인
 				Member loginUser = service.memberLogin(m);// 회원정보 넘겨주기 리턴설계 로그인성공시 객체를 리턴을 받고 화면을 넘어다녀도 계속유지되도록한다.
+
 				if (loginUser == null) {
 					JOptionPane.showMessageDialog(frame, "로그인 실패");
 				} else {
 					JOptionPane.showMessageDialog(frame, "로그인 성공");
 
 					frame.dispose(); // 로그인창은 꺼준다.
-					
+					if (infoid.length() == 10) {
+						Mainpa2 main = new Mainpa2(loginUser);
+					} else {
+						Mainpa main = new Mainpa(loginUser);
+					}
 				}
 			}
 
@@ -229,6 +234,7 @@ public class login {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+
 				String Army_id = ID2.getText();
 				String Password = PW2.getText();
 				String PasswordCheck = PWW2.getText();
@@ -244,10 +250,10 @@ public class login {
 
 					Member member = new Member(Army_id, Password, PasswordCheck, Phonenumber, sex);
 					// Controller에게 회원가입요청
-//	               if(Password!=PasswordCheck) {
-//	                  JOptionPane.showMessageDialog(frame,
-//	                         "회원가입 실패");
-//	               }
+//               if(Password!=PasswordCheck) {
+//                  JOptionPane.showMessageDialog(frame,
+//                         "회원가입 실패");
+//               }
 
 					boolean result = service.memberJoin(member); // 정보는 m을 받아서 조인. 성공하면 ture 실패하면false를 받기위해 불린형 타입에
 																	// 넣어준다.
@@ -269,6 +275,7 @@ public class login {
 				} else {
 					JOptionPane.showMessageDialog(frame, "비밀번호를 확인해주세요");
 				}
+
 			}
 		});
 		btnNewButton.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(19, 12, 51)));
@@ -367,4 +374,5 @@ public class login {
 		pnlCard2.add(lblNewLabel_6);
 
 	}
+
 }

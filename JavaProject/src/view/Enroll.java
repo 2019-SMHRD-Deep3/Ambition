@@ -6,12 +6,15 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import controller.MemberManagementService;
@@ -21,8 +24,13 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Enroll {
 
@@ -40,7 +48,9 @@ public class Enroll {
    private JButton btnNewButton;
    MemberManagementService service = new MemberManagementService();
    private JTextField SEX;
-   private mainpa window;
+   private JTable table;
+   private Mainpa window;
+   private JScrollPane scrollPane;
    private JTextField Salary;
 
    /**
@@ -52,10 +62,11 @@ public class Enroll {
     * 
     * @param window
     */
-   public Enroll(mainpa window) {
+   public Enroll(Mainpa window) {
       this.window = window;
       initialize();
       frame.setVisible(true);
+     
    }
 
    /**
@@ -206,6 +217,10 @@ public class Enroll {
       Salary.setColumns(10);
 
       btnNewButton = new JButton("\uB4F1\uB85D");
+      btnNewButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent arg0) {
+         }
+      });
       btnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
       btnNewButton.setBackground(new Color(255, 255, 255));
       btnNewButton.setForeground(Color.BLACK);
@@ -232,13 +247,15 @@ public class Enroll {
             boolean result = service.memberEnroll(member); // 정보는 m을 받아서 조인. 성공하면 true 실패하면false를 받기위해 불린형 타입에 넣어준다.
             if (result == true) {
                JOptionPane.showMessageDialog(frame, "등록성공");
-               window.show();
+               
                frame.dispose(); // 화면종료
             } else {
                JOptionPane.showMessageDialog(frame, "등록실패");
             }
 
          }
+
+      
       });
       btnNewButton.setBounds(642, 124, 97, 23);
       panel.add(btnNewButton);
@@ -259,4 +276,5 @@ public class Enroll {
      
 
    }
+   
 }

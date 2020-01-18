@@ -17,6 +17,10 @@ public class Member {
       this.sex = sex;
    }
    
+   public Member() {
+      
+   }
+   
    public Member(String army_id, String password) {
       Army_id = army_id;
       Password = password;
