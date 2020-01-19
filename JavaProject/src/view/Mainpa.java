@@ -69,6 +69,9 @@ public class Mainpa {
 	static String RANK;
 	static int index2;
 
+	
+	
+	
 	static String ID22;
 	static String CLASS22;
 	static String NAME22;

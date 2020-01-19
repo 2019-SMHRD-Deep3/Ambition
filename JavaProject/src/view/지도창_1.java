@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 public class ÁöµµÃ¢_1 extends JPanel {
 
+	
 	/**
 	 * Create the panel.
 	 */

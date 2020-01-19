@@ -20,6 +20,7 @@ import java.io.File;
 
 public class PanelTest extends JPanel {
 
+	
 	/**
 	 * Create the panel.
 	 */

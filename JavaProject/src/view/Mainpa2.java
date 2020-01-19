@@ -70,6 +70,7 @@ public class Mainpa2 {
 	static String DISCHARGE;
 	static String RANK;
 
+	
 	private JTextField textField;
 	private JPanel panel_1;
 	private JScrollPane scrollPane_1;
