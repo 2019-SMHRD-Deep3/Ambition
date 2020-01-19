@@ -412,7 +412,7 @@ public class Mainpa2 {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("ARMY HR SYSTEM");
+		JLabel lblNewLabel = new JLabel("MILITARY HR SYSTEM");
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -424,7 +424,7 @@ public class Mainpa2 {
 
 			}
 		});
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 23));
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 20));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(61, 15, 202, 77);
 		panel.add(lblNewLabel);
