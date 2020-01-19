@@ -6,6 +6,8 @@ drop table armyclass;
 drop table vacation;
 drop table salary;
 drop table logininfo;
+drop table vacation_view;
+drop table vacation_view2;
 commit;
 
 create table unit(
@@ -17,6 +19,7 @@ insert into unit values('탄약');
 insert into unit values('통신');
 insert into unit values('의무');
 commit;
+
 
 
 create table armyClass(
@@ -37,7 +40,6 @@ insert into armyClass values('소령');
 insert into armyClass values('중령');
 commit;
 
-
 create table vacation (
 vacation varchar2(40) primary key);
 insert into vacation values('공식휴가');
@@ -47,6 +49,7 @@ insert into vacation values('외출');
 insert into vacation values('외박');
 commit;
 
+
 create table salary(
 armyClass varchar2(10),
 salary varchar2(50),
@@ -55,22 +58,6 @@ rank varchar2(10) primary key
 alter table salary
 add constraint fk_armyClass foreign key(armyClass)
 REFERENCES armyClass(armyClass);
-insert into salary values('이등병','200000','이등병');
-insert into salary values('일병','300000','일병');
-insert into salary values('상병','400000','상병');
-insert into salary values('병장','500000','병장');
-insert into salary values('하사','1500000','하사');
-insert into salary values('중사','2000000','중사');
-insert into salary values('상사','2500000','상사');
-insert into salary values('준위','3000000','준위');
-insert into salary values('원사','3000000','원사');
-insert into salary values('소위','1700000','소위');
-insert into salary values('중위','2200000','중위');
-insert into salary values('대위','2700000','대위');
-insert into salary values('소령','3200000','소령');
-insert into salary values('중령','3700000','중령');
-commit;
-
 
 
 create table army(
@@ -98,6 +85,21 @@ REFERENCES unit(MOS);
 alter table army
 add constraint fk_salary_army foreign key(rank)
 REFERENCES salary(rank);
+insert into salary values('이등병','200000','이등병');
+insert into salary values('일병','300000','일병');
+insert into salary values('상병','400000','상병');
+insert into salary values('병장','500000','병장');
+insert into salary values('하사','1500000','하사');
+insert into salary values('중사','2000000','중사');
+insert into salary values('상사','2500000','상사');
+insert into salary values('준위','3000000','준위');
+insert into salary values('원사','3000000','원사');
+insert into salary values('소위','1700000','소위');
+insert into salary values('중위','2200000','중위');
+insert into salary values('대위','2700000','대위');
+insert into salary values('소령','3200000','소령');
+insert into salary values('중령','3700000','중령');
+commit;
 
 create table sous(
 army_id varchar2(20) primary key,
@@ -154,7 +156,7 @@ alter table officer
 add constraint fk_salary_officer foreign key(rank)
 REFERENCES salary(rank);
 
-drop table vacation_view;
+
 create table vacation_view(
 army_id varchar2(20) primary key,
 armyClass varchar2(10) not null,
@@ -170,10 +172,22 @@ alter table vacation_view
 add constraint fk_vacation_view_vacation foreign key(vacation)
 REFERENCES vacation(vacation);
 
+drop table vacation_view2;
+create table vacation_view2(
+army_id varchar2(20) primary key,
+armyClass varchar2(10) not null,
+army_name varchar2(20) not null,
+vacation varchar2(40),
+vacationstart date,
+vacationfinish date
+);
+alter table vacation_view2
+add constraint fk_vacation2_vacation foreign key(armyClass)
+REFERENCES armyClass(armyClass);
+alter table vacation_view2
+add constraint fk_vacation2_vacationv foreign key(vacation)
+REFERENCES vacation(vacation);
 
-
-insert into vacation_view values ('0000000000','일병','수송','전','공식휴가','2010.01.13','2010.01.15');
-select * from vacation_view;
 
 create table logininfo (
 army_id varchar2(10) PRIMARY KEY,
@@ -185,66 +199,23 @@ sex varchar2(10));
 
 
 
-
-
-
-insert into army values ('0000000000','일병','수송','전준영','1','남','1','A',null,'1','1','일병');
-
-
-insert into ii values ('jsdifj','siofjsdf',14984198);
-
-update army set vacation = '?' where army_id = '?';
+insert into officer values ('101111','중령','탄약','차준섭','600514','남자','광주광역시','O',null,'80.04.25',null,'중령');
+insert into officer values ('110871','소령','탄약','김동원','710703','남자','광주광역시','B',null,'85.08.11',null,'소령');
+insert into officer values ('111254','대위','탄약','황해도','910624','남자','광주광역시','A',null,'11.07.24',null,'대위');
+insert into sous values ('12147412','상사','작전','박병관','900831','남자','인천광역시','B',null,'12.01.19',null,'상사');
+insert into army values ('121712','소위','통신','장진','900422','남자','광주광역시','A',null,'12.05.03',null,'소위');
+insert into sous values ('14760151','중사','수송','전준영','940314','남자','전남고흥군','O',null,'14.01.13',null,'중사');
+insert into officer values ('151045','중위','의무','배민이','950123','여자','미국특별시','A',null,'15.07.01',null,'중위');
+insert into army values ('1576009629','병장','수송','최태양','940528','남자','광주광역시','A',null,'15.02.07','16.11.08','병장');
+insert into army values ('1373000824','병장','탄약','안인태','930110','남자','광주광역시','A',null,'13.01.02','14.10.06','병장');
+insert into army values ('1472015549','병장','수송','곽창혁','940511','남자','광주광역시','O',null,'14.07.22','16.04.21','병장');
+insert into army values ('1773060709','병장','작전','박석채','960215','남자','광주광역시','A',null,'17.12.26','19.08.30','병장');
+insert into army values ('1571032399','병장','작전','천승현','950417','남자','광주광역시','O',null,'15.10.10','17.07.09','병장');
+insert into army values ('2073010133','상병','탄약','오원일','980411','남자','광주광역시','AB',null,'20.01.20','22.01.19','상병');
+insert into army values ('2076000706','이등병','의무','김민지','950706','여자','광주광역시','A',null,'20.01.18','22.01.17','이등병');
+insert into army values ('2012345678','이등병','의무','김희조','930456','여자','광주광역시','A',null,'20.01.17','22.01.16','이등병');
+insert into army values ('2012378678','일병','수송','김효진','951202','여자','광주광역시','A',null,'20.01.05','22.01.04','일병');
+insert into army values ('1701234567','상병','통신','가나다','921213','남자','광주광역시','A',null,'17.02.03','19.02.02','상병');
+insert into army values ('1701012345','일병','통신','마바사','920214','남자','서울특별시','B',null,'17.01.14','19.01.13','일병');
+insert into army values ('1801012345','이등병','통신','아자차','960708','남자','부산광역시','A',null,'18.01.05','20.01.04','이등병');
 commit;
-
-delete from army where army_id = '?';
-delete from sous where army_id = '?';
-delete from officer where army_id = '?';
-
-select * from army where armyClass = '일병';
-
-update army set (armyClass,MOS,army_name,army_birth,sex,address,bloodtype,vacation,enlist,discharge,rank) = '상병','탄약','전지수','2','여','광주광역시','B','비공식휴가','12','34','상병') where army_id = '1111111111';
-
-update army  set  armyClass='상병', MOS ='탄약' , army_name = '전준영', army_birth = '123', sex = '23', address = '123', bloodtype = '123', vacation = null where army_id = '1111111111';
-
-select a.army_id, s.army_id from army a, sous s where a.army_id = s.army_id; 
-
-select o.army_id,o.armyclass,o.MOS,o.army_name,o.army_birth,o.sex,o.address,o.bloodtype,o.vacation,o.enlist,o.discharge,s.salary from officer o, salary s where o.rank=s.rank
-UNION all 
-select a.army_id,a.armyclass,a.MOS,a.army_name,a.army_birth,a.sex,a.address,a.bloodtype,a.vacation,a.enlist,a.discharge,s.salary from army a, salary s where a.rank=s.rank
-UNION all 
-select so.army_id,so.armyclass,so.MOS,so.army_name,so.army_birth,so.sex,so.address,so.bloodtype,so.vacation,so.enlist,so.discharge,s.salary from sous so, salary s where so.rank=s.rank;
-
-
-
-
-
-
-
-
-
-
-create table supply(
-supply_id varchar2(20) primary key,
-supply_goods varchar2(30));
-insert into supply values ('01','k2');
-insert into supply values ('02','combat');
-insert into supply values ('03','boots');
-insert into supply values ('04','socks');
-insert into supply values ('05','underwear');
-insert into supply values ('06','tshirt');
-commit;
-drop table vacation_view;
-create table vacation_view(
-army_id varchar2(20) primary key,
-armyClass varchar2(10),
-army_name varchar2(20) not null,
-vacation varchar2(40)
-);
-alter table vacation_view
-add constraint fk_vacation_armyClass_vacation foreign key(armyClass)
-REFERENCES armyClass(armyClass);
-alter table vacation_view
-add constraint fk_vacation_view_vacation foreign key(vacation)
-REFERENCES vacation(vacation);
-
-select * from vacation_view;

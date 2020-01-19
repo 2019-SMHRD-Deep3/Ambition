@@ -56,6 +56,16 @@ public class MemberManagementService {
 
 	}
 
+	public boolean memberVacationEnroll2(MemberAll member) {
+		int rows = dao.insertVacation2(member);
+		if (rows == 0) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 //   public ArrayList<Member> memberLookup(String id) {
 //      
 //      
@@ -71,6 +81,16 @@ public class MemberManagementService {
 	public ArrayList<MemberAll> MemberAllVacation() {
 		// TODO Auto-generated method stub
 		return dao.selectVacation();
+	}
+
+	public ArrayList<MemberAll> MemberAllVacation2() {
+		// TODO Auto-generated method stub
+		return dao.selectVacation2();
+	}
+
+	public ArrayList<MemberAll> MemberAllVacation3() {
+		// TODO Auto-generated method stub
+		return dao.selectVacation3();
 	}
 
 }

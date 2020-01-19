@@ -267,5 +267,16 @@ public class CalendarCard2 extends JPanel {
 		btnNewButton_1.setBounds(218, 23, 64, 23);
 		panel.add(btnNewButton_1);
 
+		JButton btnNewButton_2 = new JButton("\uD604\uD669");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Vacationlist view = new Vacationlist();
+			}
+		});
+		btnNewButton_2.setFont(new Font("±¼¸²", Font.BOLD, 12));
+		btnNewButton_2.setBounds(138, 23, 66, 23);
+		panel.add(btnNewButton_2);
+
 	}
 }

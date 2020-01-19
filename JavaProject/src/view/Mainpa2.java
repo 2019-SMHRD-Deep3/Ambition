@@ -356,14 +356,14 @@ public class Mainpa2 {
 		BtnNewButton.setBackground(new Color(0, 0, 51));
 		BtnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
 		BtnNewButton.setForeground(new Color(255, 255, 255));
-		BtnNewButton.setBounds(389, 623, 79, 23);
+		BtnNewButton.setBounds(389, 250, 79, 23);
 		달력패널.add(BtnNewButton);
 
 		JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
 		BtnNewButton_1.setBackground(new Color(0, 0, 51));
 		BtnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
 		BtnNewButton_1.setForeground(new Color(255, 255, 255));
-		BtnNewButton_1.setBounds(484, 623, 73, 23);
+		BtnNewButton_1.setBounds(484, 250, 73, 23);
 		달력패널.add(BtnNewButton_1);
 
 		JLabel lblNewLabel_5 = new JLabel("");

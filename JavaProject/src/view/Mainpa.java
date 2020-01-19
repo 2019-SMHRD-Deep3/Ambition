@@ -66,6 +66,12 @@ public class Mainpa {
 	static String ENLIST;
 	static String DISCHARGE;
 	static String RANK;
+	static int index2;
+
+	static String ID22;
+	static String CLASS22;
+	static String NAME22;
+	static String VACATION22;
 
 	static String IDVacation;
 
@@ -180,7 +186,7 @@ public class Mainpa {
 		JPanel HumanMangement = new JPanel();
 		HumanMangement.setBackground(Color.WHITE);
 		HumanMangement.setBounds(0, 0, 991, 661);
-		panel_2.add(HumanMangement);
+//         panel_2.add(HumanMangement);
 		HumanMangement.setLayout(null);// 추가한것
 
 		// 추가한공간 시작
@@ -254,7 +260,7 @@ public class Mainpa {
 
 		HumanMangement.add(btnNewButton_2);
 
-		JButton btnNewButton_5 = new JButton("\uAC31\uC2E0");
+		JButton btnNewButton_5 = new JButton("조회");
 		btnNewButton_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -274,7 +280,7 @@ public class Mainpa {
 		HumanMangement.add(lblNewLabel_7);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 200, 991, 400);
+		scrollPane.setBounds(0, 200, 991, 461);
 		HumanMangement.add(scrollPane);
 
 		JComboBox comboBox = new JComboBox();
@@ -337,7 +343,7 @@ public class Mainpa {
 		JPanel Attend = new JPanel();
 		Attend.setBackground(new Color(240, 240, 240));
 		Attend.setBounds(0, 0, 991, 661);
-		panel_2.add(Attend); // 주석처리는 앞에 안보이게
+//      panel_2.add(Attend); //주석처리는 앞에 안보이게
 		Attend.setLayout(new CardLayout(0, 0));
 
 		JPanel 달력패널 = new JPanel();
@@ -352,6 +358,7 @@ public class Mainpa {
 		panel_3.setLayout(null);
 
 		JButton btnNewButton_6 = new JButton("\uC0AD\uC81C");
+
 		btnNewButton_6.addMouseListener(new MouseAdapter() {
 
 			private String Army_ID;
@@ -380,8 +387,26 @@ public class Mainpa {
 		});
 		btnNewButton_6.setFont(new Font("굴림", Font.BOLD, 12));
 		btnNewButton_6.setBackground(Color.WHITE);
-		btnNewButton_6.setBounds(20, 0, 68, 23);
+		btnNewButton_6.setBounds(100, 0, 68, 23);
 		panel_3.add(btnNewButton_6);
+
+		JButton btnNewButton_7 = new JButton("\uC704\uB85C");
+		btnNewButton_7.setBackground(Color.WHITE);
+		btnNewButton_7.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				index2 = table.getSelectedRow();
+				ID22 = (String) table.getValueAt(index2, 0);
+				CLASS22 = (String) table.getValueAt(index2, 1);
+				NAME22 = (String) table.getValueAt(index2, 2);
+				VACATION22 = (String) table.getValueAt(index2, 3);
+
+			}
+		});
+		btnNewButton_7.setBounds(20, 0, 68, 23);
+		panel_3.add(btnNewButton_7);
 
 		JPanel 달력뷰 = new JPanel();
 		달력뷰.setBounds(0, 50, 988, 184);
@@ -390,21 +415,27 @@ public class Mainpa {
 		달력뷰.setLayout(cardLayout);
 
 		for (int i = 0; i < 12; i++) {
-			달력뷰.add(new CalendarCard((i + 1) + "월", numOfdays[i]));
+			if (i < 9) {
+
+				달력뷰.add(new CalendarCard("0" + (i + 1), numOfdays[i]));
+			} else {
+
+				달력뷰.add(new CalendarCard((i + 1) + "", numOfdays[i]));
+			}
 		}
 
 		JButton BtnNewButton = new JButton("\uC774\uC804\uB2EC");
 		BtnNewButton.setBackground(new Color(0, 0, 51));
 		BtnNewButton.setFont(new Font("굴림", Font.BOLD, 12));
 		BtnNewButton.setForeground(new Color(255, 255, 255));
-		BtnNewButton.setBounds(389, 623, 79, 23);
+		BtnNewButton.setBounds(389, 250, 79, 23);
 		달력패널.add(BtnNewButton);
 
 		JButton BtnNewButton_1 = new JButton("\uB2E4\uC74C\uB2EC");
 		BtnNewButton_1.setBackground(new Color(0, 0, 51));
 		BtnNewButton_1.setFont(new Font("굴림", Font.BOLD, 12));
 		BtnNewButton_1.setForeground(new Color(255, 255, 255));
-		BtnNewButton_1.setBounds(484, 623, 73, 23);
+		BtnNewButton_1.setBounds(484, 250, 73, 23);
 		달력패널.add(BtnNewButton_1);
 
 		JLabel lblNewLabel_5 = new JLabel("");
@@ -419,6 +450,11 @@ public class Mainpa {
 		달력패널.add(scrollPane_1);
 
 		달력패널.add(lblNewLabel_5);
+
+		JLabel lblNewLabel_8 = new JLabel("출타신청현황");
+		lblNewLabel_8.setFont(new Font("굴림", Font.BOLD, 16));
+		lblNewLabel_8.setBounds(20, 250, 150, 25);
+		달력패널.add(lblNewLabel_8);
 
 		BtnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -502,6 +538,7 @@ public class Mainpa {
 				panel_2.repaint();
 				panel_2.revalidate();
 				show_VacationAView();
+
 			}
 		});
 		label_1.setFont(new Font("굴림", Font.BOLD, 16));
@@ -841,8 +878,10 @@ public class Mainpa {
 		ArrayList<MemberAll> list = service.MemberAllLookup();
 
 		Object[][] data = new Object[list.size()][12];
+
 		for (int i = 0; i < list.size(); i++) {
 			MemberAll m = list.get(i);
+
 			data[i] = new Object[] { m.getArmy_id(), m.getArmyClass(), m.getMos(), m.getArmy_name(), m.getArmy_birth(),
 					m.getSex(), m.getAddress(), m.getBloodType(), m.getVacaTion(), m.getEnlist(), m.getDischarge(),
 					m.getRANK() };
@@ -922,6 +961,38 @@ public class Mainpa {
 			}
 		}
 
+	}
+
+	public static String getID22() {
+		return ID22;
+	}
+
+	public static void setID22(String iD22) {
+		ID22 = iD22;
+	}
+
+	public static String getCLASS22() {
+		return CLASS22;
+	}
+
+	public static void setCLASS22(String cLASS22) {
+		CLASS22 = cLASS22;
+	}
+
+	public static String getNAME22() {
+		return NAME22;
+	}
+
+	public static void setNAME22(String nAME22) {
+		NAME22 = nAME22;
+	}
+
+	public static String getVACATION22() {
+		return VACATION22;
+	}
+
+	public static void setVACATION22(String vACATION22) {
+		VACATION22 = vACATION22;
 	}
 
 	public static String getIDVacation() {
