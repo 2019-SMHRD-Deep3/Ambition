@@ -42,6 +42,7 @@ public class Mainpa {
 	MemberDAO dao = new MemberDAO();
 	private JFrame frame;
 	private CardLayout cardLayout;
+	private CardLayout cardlayout;
 	private MemberManagementService service = new MemberManagementService();
 	private int[] numOfdays = { 31, 28, 30, 31, 30, 31, 31, 30, 31, 30, 31, 30 };
 	private Member loginUser;
@@ -129,48 +130,28 @@ public class Mainpa {
 		lblNewLabel_2.setBounds(-102, 0, 1093, 661);
 		MainView.add(lblNewLabel_2);
 
-		JPanel LocationInfo = new JPanel();
-		LocationInfo.setBounds(0, 0, 991, 661);
-		panel_2.add(LocationInfo);
-		LocationInfo.setBackground(new Color(255, 255, 255));
-		LocationInfo.setLayout(null);
+	      JPanel LocationInfo = new JPanel();
+	      LocationInfo.setBounds(0, 0, 991, 661);
+	      panel_2.add(LocationInfo);
+	      LocationInfo.setBackground(new Color(255, 255, 255));
+	      LocationInfo.setLayout(null);
+	      
+	      JPanel LocationView = new JPanel();
+	      LocationView.setBounds(0, 127, 988, 456);
+	      LocationInfo.add(LocationView);
+	      cardlayout = new CardLayout(0, 0);
+	      LocationView.setLayout(cardlayout);
+	       
+        ÁöµµÃ¢_1 ÁöµµÃ¢_1 = new ÁöµµÃ¢_1();
+        LocationView.add(ÁöµµÃ¢_1);
+	      
 
-		JLabel lblClick = new JLabel("\u261CClick");
-		lblClick.setBackground(new Color(255, 250, 250));
-		lblClick.setForeground(new Color(199, 21, 133));
-		lblClick.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
-		lblClick.setBounds(687, 259, 94, 28);
-		LocationInfo.add(lblClick);
+	      
+	      JLabel ºä = new JLabel("");
+	      ºä.setIcon(new ImageIcon("C:\\image\\\uB178\uC120\uCD5C\uC885.PNG"));
+	      ºä.setBounds(0, 0, 991, 127);
+	      LocationInfo.add(ºä);
 
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\image\\KakaoTalk_20200117_094631561.png"));
-		lblNewLabel_3.setBounds(0, 0, 991, 661);
-		LocationInfo.add(lblNewLabel_3);
-
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setBounds(600, 259, 120, 65);
-		LocationInfo.add(btnNewButton);
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("ÇÔÃÊ·Ò¹ÙÅÁ", Font.PLAIN, 13));
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Desktop d = Desktop.getDesktop();
-				try {
-					d.browse(new URI(
-							"https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C%20%EB%82%A8%EA%B5%AC%20%EC%86%A1%EC%95%94%EB%A1%9C%2060%20%EA%B4%91%EC%A3%BCCGI%EC%84%BC%ED%84%B0?c=14123855.5344141,4178896.8350967,17,0,0,0,dh"));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (URISyntaxException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnNewButton.setBorder(new MatteBorder(0, 0, 0, 0, (Color) new Color(0, 0, 0)));
-		btnNewButton.setEnabled(false);
-		btnNewButton.setBackground(new Color(0, 0, 0, 0));
 
 		JPanel UnitIntroduce = new JPanel();
 		UnitIntroduce.setBackground(new Color(214, 220, 229));
@@ -179,7 +160,7 @@ public class Mainpa {
 		UnitIntroduce.setLayout(null);
 
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\image\\\uCC28\uC900\uC12D\uC6D0\uC7A5.png"));
+		lblNewLabel_4.setIcon(new ImageIcon("C:\\image\\\uB300\uB300\uC7A5\uC778\uC0AC\uB9D0.png"));
 		lblNewLabel_4.setBounds(0, 0, 991, 661);
 		UnitIntroduce.add(lblNewLabel_4);
 
@@ -546,7 +527,7 @@ public class Mainpa {
 		label_1.setBounds(24, 365, 192, 67);
 		panel.add(label_1);
 
-		JLabel label_2 = new JLabel("\uC624\uC2DC\uB294 \uAE38");
+		JLabel label_2 = new JLabel("\uB178\uC120\uC815\uBCF4");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.addMouseListener(new MouseAdapter() {
 			@Override

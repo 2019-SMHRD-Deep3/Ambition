@@ -26,17 +26,14 @@ public class PanelTest extends JPanel {
 	public PanelTest() {
 	      this.setBackground(Color.WHITE);
 
-	      this.setBounds(100, 100, 970, 676);
+	      this.setBounds(100, 100, 991, 676);
 	      this.setLayout(null);
 	      
-	      JScrollPane scrollPane = new JScrollPane();
-	      scrollPane.setBounds(0, 150, 986, 510);
-	      this.add(scrollPane);
-	      
 	      JPanel panel_19 = new JPanel();
+	      panel_19.setBounds(36, 161, 955, 467);
+	      add(panel_19);
 	      panel_19.setBackground(Color.WHITE);
 	      panel_19.setPreferredSize(new Dimension(850, 700));
-	      scrollPane.setViewportView(panel_19);
 	      panel_19.setLayout(null);
 	      
 	      JPanel panel_1 = new JPanel();
@@ -68,15 +65,6 @@ public class PanelTest extends JPanel {
 	      label_4.setFont(new Font("±¼¸²", Font.BOLD, 13));
 	      label_4.setBounds(4, 0, 73, 25);
 	      panel_2.add(label_4);
-	      
-	      JPanel panel_7 = new JPanel();
-	      panel_7.setBounds(10, 464, 107, 196);
-	      panel_19.add(panel_7);
-	      
-	      JSeparator separator_8 = new JSeparator();
-	      separator_8.setBounds(60, 433, 1, 30);
-	      panel_19.add(separator_8);
-	      separator_8.setOrientation(SwingConstants.VERTICAL);
 	      
 	      JPanel panel = new JPanel();
 	      panel.setBounds(21, 313, 80, 90);
@@ -357,42 +345,6 @@ public class PanelTest extends JPanel {
 	      separator_7.setBounds(452, 108, 25, 25);
 	      panel_19.add(separator_7);
 	      separator_7.setOrientation(SwingConstants.VERTICAL);
-	      
-	      JPanel panel_12 = new JPanel();
-	      panel_12.setBounds(198, 464, 107, 196);
-	      panel_19.add(panel_12);
-	      
-	      JPanel panel_13 = new JPanel();
-	      panel_13.setBounds(399, 464, 107, 196);
-	      panel_19.add(panel_13);
-	      
-	      JPanel panel_14 = new JPanel();
-	      panel_14.setBounds(600, 464, 107, 196);
-	      panel_19.add(panel_14);
-	      
-	      JPanel panel_15 = new JPanel();
-	      panel_15.setBounds(799, 464, 107, 196);
-	      panel_19.add(panel_15);
-	      
-	      JSeparator separator_9 = new JSeparator();
-	      separator_9.setBounds(251, 433, 1, 30);
-	      panel_19.add(separator_9);
-	      separator_9.setOrientation(SwingConstants.VERTICAL);
-	      
-	      JSeparator separator_10 = new JSeparator();
-	      separator_10.setBounds(452, 433, 1, 30);
-	      panel_19.add(separator_10);
-	      separator_10.setOrientation(SwingConstants.VERTICAL);
-	      
-	      JSeparator separator_11 = new JSeparator();
-	      separator_11.setBounds(654, 433, 1, 30);
-	      panel_19.add(separator_11);
-	      separator_11.setOrientation(SwingConstants.VERTICAL);
-	      
-	      JSeparator separator_12 = new JSeparator();
-	      separator_12.setBounds(849, 433, 1, 30);
-	      panel_19.add(separator_12);
-	      separator_12.setOrientation(SwingConstants.VERTICAL);
 	      
 	      JSeparator separator_13 = new JSeparator();
 	      separator_13.setBounds(452, 276, 25, 25);

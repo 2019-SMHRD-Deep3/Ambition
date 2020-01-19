@@ -54,6 +54,7 @@ public class login {
 	private JPasswordField PW;
 	private JButton btnNewButton_1;
 	private MemberManagementService service = new MemberManagementService();
+	private JLabel lblNewLabel_7;
 //   
 
 	public static void main(String[] args) {
@@ -372,6 +373,11 @@ public class login {
 		lblNewLabel_6.setIcon(new ImageIcon("C:\\image\\mainimage2.png"));
 		lblNewLabel_6.setBounds(0, 0, 480, 554);
 		pnlCard2.add(lblNewLabel_6);
+		
+		lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setIcon(new ImageIcon("C:\\image\\\uBA54\uC778\uC774\uBBF8\uC9C04 (2).png"));
+		lblNewLabel_7.setBounds(0, 0, 947, 554);
+		panel.add(lblNewLabel_7);
 
 	}
 
